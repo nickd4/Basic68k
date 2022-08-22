@@ -1,0 +1,1995 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://philpem.me.uk/leeedavison/68k/ehbasic/index.html
+Subject: Enhanced BASIC language reference
+Date: Mon, 22 Aug 2022 07:10:53 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--Je08jxmrKZwxyPGWYNtddK8LLOSRxILKE1XNFFbdyL----"
+
+
+------MultipartBoundary--Je08jxmrKZwxyPGWYNtddK8LLOSRxILKE1XNFFbdyL----
+Content-Type: text/html
+Content-ID: <frame-04B516527B65A30B535728F517A58CDC@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://philpem.me.uk/leeedavison/68k/ehbasic/index.html
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Dwindows-1252"><title>Enhanced BASIC language reference</title></head><fr=
+ameset cols=3D"*,140" frameborder=3D"0" border=3D"0" framespacing=3D"0"><fr=
+ame src=3D"cid:frame-2D5E853FE665591132B49488E0320BDB@mhtml.blink" name=3D"=
+memberPage" marginwidth=3D"0" marginheight=3D"0" scrolling=3D"auto" noresiz=
+e=3D""><frame src=3D"cid:frame-FB8FCFC9105E6AF752AFA1D869F93FD4@mhtml.blink=
+" name=3D"LycosAdFrame" marginwidth=3D"0" marginheight=3D"0" scrolling=3D"a=
+uto" noresize=3D""></frameset>
+
+
+ =20
+
+
+
+
+
+=20
+
+    =20
+
+
+
+
+
+            =20
+            =20
+            =20
+            =20
+   =20
+
+                =20
+     =20
+=20
+
+                  =20
+=20
+
+              =20
+           =20
+            =20
+                 =20
+  =20
+
+      =20
+   =20
+
+
+
+
+
+
+
+=20
+ =20
+=20
+=20
+=20
+=20
+=20
+
+
+=20
+
+
+
+
+  =20
+ =20
+
+             =20
+            =20
+               =20
+        =20
+
+
+
+
+
+  =20
+
+
+
+    =20
+
+
+
+
+
+
+
+
+=20
+=20
+=20
+ =20
+
+
+=20
+
+
+
+
+
+ =20
+	 =20
+
+
+	 =20
+	=20
+	   =20
+=09
+=09
+
+
+
+
+
+  =20
+
+
+=20
+
+
+
+ =20
+       =20
+
+
+
+              =20
+                  =20
+                    =20
+                    =20
+                    =20
+                 =20
+            =20
+       =20
+
+          =20
+        =20
+
+        =20
+                   =20
+                       =20
+               =20
+
+                               =20
+                       =20
+               =20
+       =20
+           =20
+                           =20
+                       =20
+               =20
+       =20
+        =20
+               =20
+       =20
+
+
+
+</html><!-- START RedMeasure V4 - Java v1.1  $Revision: 1.4 $ --><!-- COPYR=
+IGHT 2000 Red Sheriff Limited --><!-- END RedMeasure V4 -->
+------MultipartBoundary--Je08jxmrKZwxyPGWYNtddK8LLOSRxILKE1XNFFbdyL----
+Content-Type: text/html
+Content-ID: <frame-2D5E853FE665591132B49488E0320BDB@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://philpem.me.uk/leeedavison/68k/ehbasic/language.html
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Dwindows-1252">
+
+
+<title>Enhanced BASIC language reference</title>
+<meta name=3D"description" content=3D"An advanced BASIC interpreter for the=
+ 680x0
+ family of microprocessors.">
+</head>
+<body background=3D"https://philpem.me.uk/leeedavison/back.png" bgcolor=3D"=
+white" text=3D"black" link=3D"#0000EE" vlink=3D"#0000CC" marginwidth=3D"0" =
+marginheight=3D"0">
+<p>
+<a href=3D"https://philpem.me.uk/leeedavison/index.html">
+ <img src=3D"https://philpem.me.uk/leeedavison/epc.png" align=3D"RIGHT" bor=
+der=3D"0" alt=3D"[Return to top]"></a>
+</p><p>
+<font size=3D"+1">Enhanced BASIC language reference </font><font size=3D"-1=
+">by Lee Davison</font>
+<br clear=3D"all"><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/=
+index.html#link_1">[Back]</a>
+<br clear=3D"all"></p><p>
+</p><hr>
+<p>
+</p><p>
+<b><u>Numbers</u></b>
+</p><blockquote>
+ Floating numbers may range from zero to plus or minus 1.70141173x10^38 and=
+ will, when
+ assigned as variables, have an accuracy of just under 1 part in 1.68 x 10^=
+7. During
+ calculations the mantissa is extended to 32 bits with a corresponding incr=
+ease in
+ accuracy.
+ <p>Numbers can be preceded by a sign, + or -, and are written as a string =
+of
+ numeric digits with or without a decimal point and can also have a positiv=
+e
+ or negative exponent as a power of 10 multiplier e.g.
+</p><p>
+</p><center>
+<table width=3D"85%" cellpadding=3D"3" cellspacing=3D"0" border=3D"0">
+<tbody><tr>
+<td>-142</td><td>96.3</td><td>0.25</td><td>-136.42E-3</td><td>-1.3E7</td><t=
+d>1</td>=20
+</tr>
+</tbody></table>
+</center>
+<p>
+ .. are all valid numbers.
+</p><p>
+ Integer numbers may range from -2147483648 to 4294967295 but numbers above=
+ 2147483647
+ will 'wrap round' to their equivalent 2s complement negative value.
+
+ Integers can also be expressed in either hexadecimal or binary. Hexadecima=
+l numbers
+ should be preceded by <b>$</b> and binary numbers preceded by <b>%</b>, e.=
+g.
+</p><p>
+</p><center>
+<table width=3D"85%" cellpadding=3D"3" cellspacing=3D"0" border=3D"0">
+<tbody><tr>
+<td>%101010</td><td>-$FFE0</td><td>$A0127BD</td>
+<td>-%10011001</td><td>%00001010</td><td>$0A</td>=20
+</tr>
+</tbody></table>
+</center>
+<p>
+ .. again are all valid numbers.
+</p></blockquote>
+<b><u>Strings</u></b>
+<blockquote>
+ Strings are any string of printable characters enclosed in a pair of quota=
+tion marks.
+ Non printing characters may be converted to single character strings using=
+ the
+ <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language.html#CHR=
+">CHR$()</a> functions.
+<p>
+</p><center>
+<table width=3D"85%" cellpadding=3D"3" cellspacing=3D"0" border=3D"0">
+<tbody><tr>
+<td>"Hello world"</td><td>"-136.42E-3"</td>
+<td>"+----+----+"</td><td>"[Y/n]"</td><td>"Y"</td>
+</tr>
+</tbody></table>
+</center>
+<p>
+ Are all valid strings.
+</p></blockquote>
+<b><u>Variables</u></b>
+<blockquote>
+ Variables of floating point, integer and string type are available. String=
+ variables
+ are distinguished by the <b>$</b> suffix, integer variables are distinguis=
+hed by the
+ <b>&amp;</b> suffix. As well as simple variables arrays are also available=
+ and these may
+ be floating point, integer or string and are distinguished by their bracke=
+ted indices
+ after the variable name.
+<p>
+ Variable names may be any length but only the first four name characters a=
+re significant.
+ The first character must be one of "A" to "Z" or "a" to "z", any other cha=
+racters may
+ also include numbers. E.g.
+</p><p>
+</p><center>
+<table width=3D"85%" cellpadding=3D"3" cellspacing=3D"0" border=3D"0">
+<tbody><tr>
+<td>A</td><td>A$</td><td>NAME$</td><td>x2LIM</td>=20
+<td>y&amp;</td><td>colour</td><td>s1</td><td>s2&amp;</td>=20
+</tr>
+</tbody></table>
+</center>
+<p>
+ Variable names are case sensitive so AB, Ab, aB and ab are all separate va=
+riables.
+</p><p>
+ Variable names may not contain BASIC keywords. Keywords are only valid in =
+upper
+ case so 'PRINTER' is not allowed (it would be interpreted as PRINT ER) but=
+ 'printer'
+ is.
+</p><p>
+ Note that spaces in variable names are ignored so 'print e r', 'print er' =
+and 'pri nter'
+ will all be interpreted the same way.
+</p></blockquote>
+<p>
+<b><u>BASIC Keywords</u></b>
+</p><blockquote>
+ Here is a list of BASIC keywords. They are only valid when entered in uppe=
+r case as
+ shown and spaces may not be included in them. So GOTO is valid but GO TO i=
+s not.
+  <p>
+  </p><center>
+    <table width=3D"85%" cellpadding=3D"3" cellspacing=3D"0" border=3D"0">
+    <tbody><tr>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#ABS">ABS</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#AND">AND</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#ASC">ASC</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#ATN">ATN</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#BIN">BIN$</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#BITCLR">BITCLR</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#BITSET">BITSET</a></td>
+    </tr>
+    <tr>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#BITTST">BITTST</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#CALL">CALL</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#CHR">CHR$</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#CLEAR">CLEAR</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#CONT">CONT</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#COS">COS</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#DATA">DATA</a></td>
+    </tr>
+    <tr>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#DEC">DEC</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#DEEK">DEEK</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#DEF">DEF</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#DIM">DIM</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#DO">DO</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#DOKE">DOKE</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#END">END</a></td>
+    </tr>
+    <tr>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#AND">EOR</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#EXP">EXP</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#FN">FN</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#FOR">FOR</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#FRE">FRE</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#GET">GET</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#GOSUB">GOSUB</a></td>
+    </tr>
+    <tr>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#GOTO">GOTO</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#HEX">HEX$</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#IF">IF</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#INC">INC</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#INPUT">INPUT</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#INT">INT</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#LCASE">LCASE$</a></td>
+    </tr>
+    <tr>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#LEEK">LEEK</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#LEFT">LEFT$</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#LEN">LEN</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#LET">LET</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#LIST">LIST</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#LOAD">LOAD</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#LOG">LOG</a></td>
+    </tr>
+    <tr>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#LOKE">LOKE</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#LOOP">LOOP</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#MAX">MAX</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#MID">MID$</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#MIN">MIN</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#NEW">NEW</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#NEXT">NEXT</a></td>
+    </tr>
+    <tr>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#NOT">NOT</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#NULL">NULL</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#OFF">OFF</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#ON">ON</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#AND">OR</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#PEEK">PEEK</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#PI">PI</a></td>
+    </tr>
+    <tr>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#POKE">POKE</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#POS">POS</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#PRINT">PRINT</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#READ">READ</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#REM">REM</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#RESTORE">RESTORE</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#RETURN">RETURN</a></td>
+    </tr>
+    <tr>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#RIGHT">RIGHT$</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#RND">RND</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#RUN">RUN</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#SADD">SADD</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#SAVE">SAVE</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#SIN">SIN</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#SGN">SGN</a></td>
+    </tr>
+    <tr>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#SPC">SPC(</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#SQR">SQR</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#STEP">STEP</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#STOP">STOP</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#STR">STR$</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#SWAP">SWAP</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#TAB">TAB(</a></td>
+    </tr>
+    <tr>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#TAN">TAN</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#THEN">THEN</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#TO">TO</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#TWOPI">TWOPI</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#UCASE">UCASE$</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#UNTIL">UNTIL</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#USR">USR</a></td>
+    </tr>
+    <tr>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#VAL">VAL</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#VARPTR">VARPTR</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#WAIT">WAIT</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#WHILE">WHILE</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#WIDTH">WIDTH</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#AND">+</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#AND">-</a></td>
+    </tr>
+    <tr>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#AND">*</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#AND">/</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#AND">^</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#AND">&lt;&lt;</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#AND">&gt;</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#AND">=3D</a></td>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#AND">&gt;&gt;</a></td>
+    </tr>
+    <tr>
+      <td><a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language=
+.html#AND">&lt;</a></td>
+    </tr>
+    </tbody></table>
+  </center>
+ </blockquote>
+<ul>
+<li>Anything in upper case is part of the command/function structure and mu=
+st be present
+</li><li>Anything in lower case enclosed in &lt; &gt; is to be supplied by =
+the user
+</li><li>Anything enclosed in [ ] is optional
+</li><li>Anything enclosed in { } and separated by | characters are multi c=
+hoice options
+</li><li>Any items followed by an ellipsis, ... , may be repeated any numbe=
+r of times
+</li><li>Any punctuation and symbols, except those above, are part of the s=
+tructure and must
+    be included
+</li></ul>
+
+<blockquote>
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+<tbody><tr><td>var</td><td>is a valid variable name</td></tr>
+<tr><td>var$</td><td>is a valid string variable name</td></tr>
+<tr><td>var()</td><td>is a valid array name</td></tr>
+<tr><td>var$()</td><td>is a valid string array name</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>expression</td><td>is any expression returning a result</td></tr>
+<tr><td>expression$&nbsp;&nbsp;&nbsp;</td>
+<td>is any expression returning a string result</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>addr</td><td>is an integer in the range -2147483648 to 4294967295 t=
+hat will be
+ wrapped to the range 0 to 4294967295</td></tr>
+<tr><td>b</td><td>is a byte value from 0 to 255</td></tr>
+<tr><td>n</td><td>is a positive integer in the range 0 to 2147483647</td></=
+tr>
+<tr><td>w</td><td>is an integer in the range -32768 to 32767</td></tr>
+<tr><td>uw</td><td>is a positive integer in the range 0 to 65535</td></tr>
+<tr><td>l</td><td>is an integer in the range -2147483648 to 4294967295 that=
+ will be
+ wrapped to the range -2147483648 to 2147483647</td></tr>
+<tr><td>i</td><td>is a +ve integer value</td></tr>
+<tr><td>r</td><td>is real number</td></tr>
+<tr><td>+r</td><td>is a +ve value real number (0 is considered +ve)</td></t=
+r>
+<tr><td>$</td><td>is a string literal</td></tr>
+</tbody></table>
+</blockquote>
+
+<p>
+<b><u>BASIC Commands</u></b>
+</p><blockquote>
+
+<a name=3D"END"></a>
+<b>END</b>
+<blockquote>
+ Terminates program execution and returns control to the command line (dire=
+ct
+ mode). END may be placed anywhere in a program and any number, including n=
+one,
+ is allowed.
+<p>
+ Note. <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language.ht=
+ml#CONT">CONT</a> may be used after and END to resume execution from
+ the next statement.
+</p></blockquote>
+
+<a name=3D"FOR"></a>
+<b>FOR &lt;var[&amp;]&gt; =3D &lt;expression&gt; TO &lt;expression&gt;
+ [STEP expression]</b>
+<blockquote>
+ Assigns a variable to a loop counter and optionally sets the step size. If=
+ STEP
+ expression is omitted then a default step size of +1 will be assumed.
+</blockquote>
+
+<a name=3D"NEXT"></a>
+<b>NEXT [var[,var]...]</b>
+<blockquote>
+ Increments a loop variable and checks for the terminating condition. If th=
+e terminating
+ condition has been reached then execution continues with the next command,=
+ else
+ execution continues with the command after the <a href=3D"https://philpem.=
+me.uk/leeedavison/68k/ehbasic/language.html#FOR">FOR</a> assignment.
+</blockquote>
+
+<a name=3D"DATA"></a>
+<b>DATA [{r|$}[,{r|$}]...]</b>
+<blockquote>
+ Defines a constant or series of constants. Real constants are held as stri=
+ngs in program
+ memory and can be read as numeric values or string values. String constant=
+s may contain
+ spaces but if they need to contain commas then they must be enclosed in qu=
+otes.
+</blockquote>
+
+<a name=3D"INPUT"></a>
+<b>INPUT ["prompt$";] &lt;var&gt;[,var]...</b>
+<blockquote>
+ Get a variable, or list of variables from the input stream. A question mar=
+k, "?", is
+ always output (after the prompt string if there is one) and if further inp=
+ut is required
+ i.e. there are more variables in the list than the user entered values, th=
+en a double
+ question mark, "??", will be output until enough values have been entered.
+<p>
+ Note that the prompt string, <b>prompt$</b>, must always be a string enclo=
+sed in quotes
+ and can not be a string variable or string expression.
+</p><p>
+ There are two possible messages that may appear during the execution of an=
+ input
+ statement:
+</p><blockquote>
+ <p>
+ <i><b>Extra ignored</b></i>
+ </p><blockquote>
+  The user has attempted to enter more values than are required. Program ex=
+ecution will
+  continue but the extraneous data entered has been discarded.
+ </blockquote>
+ <p>
+ <i><b>Redo from start</b></i>
+ </p><blockquote>
+  The user has attempted to enter a string where a number was expected. The=
+ reverse never
+  causes an error as numbers are also valid strings.
+ </blockquote>
+</blockquote>
+</blockquote>
+
+<a name=3D"DIM"></a>
+<b>DIM &lt;var[{$|&amp;}](i1[,i2[,i3]])&gt;[,var[{$|&amp;}](i1[,i2[,i3]])].=
+..</b>
+<blockquote>
+ Dimension arrays. Creates arrays of either string, integer or floating var=
+iables. The
+ arrays can have one, two or three dimensions. The lower limit is always ze=
+ro and the
+ upper limit is i. If you do not dimension an array then when you first try=
+ to access it
+ an 'Undimensioned array' error will be generated.
+ <p>
+ The array created by the DIM statement will have all it's elements zeroed =
+on creation.
+</p></blockquote>
+
+<a name=3D"READ"></a>
+<b>READ &lt;var&gt;[,var]...</b>
+<blockquote>
+ Reads values from DATA statements and assigns them to variables. Trying to=
+ read a string
+ literal into a numeric variable will cause a syntax error.
+</blockquote>
+
+<a name=3D"LET"></a>
+<b>LET &lt;var&gt; =3D &lt;expression&gt;</b>
+<blockquote>
+ Assign the value of expression to var. Both var and expression bust be of =
+the same basic
+ type, i.e. both numeric or both string.
+ The LET command word is optional and just &lt;var&gt; =3D &lt;expression&g=
+t; will give
+ exactly the same result. It is only maintained for historical reasons.
+</blockquote>
+
+<a name=3D"DEC"></a>
+<b>DEC &lt;var&gt;[,var]...</b>
+<blockquote>
+ Decrement variables. The variables listed will have their values decrement=
+ed by one.
+ Trying to decrement a string variable will give a type mismatch error. DEC=
+ A is much
+ faster than doing A=3DA-1 and DEC A,A is slightly faster than doing A=3DA-=
+2.
+</blockquote>
+
+<a name=3D"SWAP"></a>
+<b>SWAP &lt;var[{$|&amp;}]&gt;,&lt;var[{$|&amp;}]&gt;</b>
+<blockquote>
+ Swap two variables. The variables listed will have their values exchanged.=
+ Both must be
+ of the same type, floating, integer or string, and either, or both, may be=
+ array
+ elements. Trying to swap variables of different types will give a type mis=
+match error.
+</blockquote>
+
+<a name=3D"GOTO"></a>
+<b>GOTO &lt;n&gt;</b>
+<blockquote>
+ Continue execution from line number n
+</blockquote>
+
+<a name=3D"RUN"></a>
+<b>RUN [n]</b>
+<blockquote>
+ Begins execution of the program currently in memory at the lowest numbered=
+ line.
+ RUN erases all variables and functions, resets <a href=3D"https://philpem.=
+me.uk/leeedavison/68k/ehbasic/language.html#FOR">FOR</a> .. <a href=3D"http=
+s://philpem.me.uk/leeedavison/68k/ehbasic/language.html#NEXT">NEXT</a>, <a =
+href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language.html#GOSUB">=
+GOSUB</a> .. <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/langu=
+age.html#RETURN">RETURN</a> and
+ <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language.html#DO"=
+>DO</a> .. <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/languag=
+e.html#LOOP">LOOP</a> states and sets the data pointer to
+ the program start.
+<p>
+ If n is specified then programme execution will start at the specified lin=
+e number.
+</p></blockquote>
+
+<a name=3D"IF"></a>
+<b>IF &lt;expression&gt;[relation expression]
+ {GOTO &lt;n&gt;|THEN&lt;{statement|n}&gt;}</b>
+<blockquote>
+ Evaluates expression. If the result of expression is non zero then the sta=
+tement(s)
+ after the after the expression are executed. If the result of expression i=
+s zero
+ then execution continues with the next line.
+<p>
+ Note. There are three valid ways to write this command ..
+</p><blockquote>
+<b>IF &lt;expression&gt; GOTO &lt;n&gt;</b>
+</blockquote>
+<blockquote>
+<b>IF &lt;expression&gt; THEN &lt;n&gt;</b>
+</blockquote>
+<blockquote>
+<b>IF &lt;expression&gt; THEN &lt;statement&gt;</b>
+</blockquote>
+</blockquote>
+
+<a name=3D"RESTORE"></a>
+<b>RESTORE [n]</b>
+<blockquote>
+ Reset the DATA pointer. If n is specified then the pointer will be reset t=
+o the
+ beginning of line n else it will be reset to the start of the program. If =
+n is specified
+ but doesn't exist an error will be generated.
+</blockquote>
+
+<a name=3D"GOSUB"></a>
+<b>GOSUB &lt;n&gt;</b>
+<blockquote>
+ Call a subroutine at line n. Program execution is diverted to line n but t=
+he calling
+ point is remembered. Upon encountering a RETURN statement program executio=
+n will
+ continue with the next statement (line) after the GOSUB.
+</blockquote>
+
+<a name=3D"RETURN"></a>
+<b>RETURN</b>
+<blockquote>
+ Returns program execution to the next statement (line) after the last <a h=
+ref=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language.html#GOSUB">G=
+OSUB</a> encountered.
+</blockquote>
+
+<a name=3D"REM"></a>
+<b>REM</b>
+<blockquote>
+ Everything following this statement on this program line will be ignored, =
+even colons.
+</blockquote>
+
+<a name=3D"STOP"></a>
+<b>STOP</b>
+<blockquote>
+ Halts program execution and generates a "Break in line n" message where n =
+is the line in
+ which the STOP was encountered.
+</blockquote>
+
+<a name=3D"ON"></a>
+<b>ON &lt;expression&gt; {GOTO|GOSUB} &lt;n&gt;[,n]...</b>
+<blockquote>
+ The integer value of expression is calculated and then the nth number afte=
+r the <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language.htm=
+l#GOTO">GOTO</a> or <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasi=
+c/language.html#GOSUB">GOSUB</a> is taken (where n is the result of
+ expression). If the result of &lt;expression&gt; is zero, or greater than =
+the number
+ of destination line numbers, then execution will continue with the instruc=
+tion following
+ this one.
+<p>
+ Note that valid results for expression range only from zero to 255. Any re=
+sult
+ outside this range will cause a 'Function call' error.
+</p></blockquote>
+
+<a name=3D"NULL"></a>
+<b>NULL &lt;n&gt;</b>
+<blockquote>
+ Sets the number of null characters printed by BASIC after every carriage  =
+return. n may
+ be specified in the range 0 to 255.
+</blockquote>=20
+
+<a name=3D"INC"></a>
+<b>INC &lt;var&gt;[,var]...</b>
+<blockquote>
+ Increment variables. The variables listed will have their values increment=
+ed by one.
+ Trying to increment a string variable will give a type mismatch error. INC=
+ A is much
+ faster than doing A=3DA+1 and INC A,A is slightly faster than doing A=3DA+=
+2.
+</blockquote>
+
+<a name=3D"WAIT"></a>
+<b>WAIT &lt;addr,b1&gt;[,b2]</b>
+<blockquote>
+ Program execution will wait at this point until the value of the location =
+addr exclusive
+ ORed with b2 then ANDed with b1 is non zero. If b2 is not defined then it =
+is assumed to
+ be zero. Note b1 and b2 must both be byte values.
+</blockquote>
+
+<a name=3D"LOAD"></a>
+<b>LOAD &lt;expression$&gt;</b>
+<blockquote>
+ Usually does nothing but does it via a vector in RAM so is easily patched.
+<p>
+ For the EASy68k simulator this attempts to load the file expression$. It w=
+ill recognise
+ the file format (binary or ASCII) and invoke the necessary routines.
+</p><p>
+ During an ASCII load you will see the program as it is being read from the=
+ file. This
+ file is also merged with any program lines currently in the memory.
+</p><p>
+ Binary loading is <i>much</i> faster and over writes any program currently=
+ in memory.
+</p></blockquote>
+
+<a name=3D"SAVE"></a>
+<b>SAVE &lt;expression$&gt;[,a[n1][-n2]]</b>
+<blockquote>
+ Usually does nothing but does it via a vector in RAM so is easily patched.
+<p>
+ For the EASy68k simulator this attempts to save the program memory to the =
+file
+ expression$. If the command has the <b>,a</b> appended then the program wi=
+ll be saved
+ in ASCII format. If saving in ASCII format then the range of the save can =
+be specified
+ as with the <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/langu=
+age.html#LIST">LIST</a> command.
+</p></blockquote>
+
+<a name=3D"DEF"></a>
+<b>DEF FN &lt;name[{$|&amp;}]&gt;(&lt;var[{$|&amp;}]&gt;) =3D &lt;statement=
+&gt;</b>
+<blockquote>
+ Defines &lt;statement&gt; as function &lt;name&gt;. &lt;name&gt; can be an=
+y valid
+ variable name, of any type, of one or more characters. &lt;var&gt; can be =
+any simple
+ variable (i.e. not an array element), again of any type, and is used to pa=
+ss the
+ function argument into the function.
+<p>
+ Note that the value of &lt;var&gt; will be unchanged by it's use in the
+ function so &lt;var&gt; should be considered to be a local variable name.
+</p></blockquote>
+
+<a name=3D"POKE"></a>
+<b>POKE &lt;addr,b&gt;</b>
+<blockquote>
+ Writes the byte value b into the address addr.
+</blockquote>
+
+<a name=3D"DOKE"></a>
+<b>DOKE &lt;addr,w&gt;</b>
+<blockquote>
+ Writes the word value w into the addresses addr and addr+1, the upper byte=
+ of w is in
+ addr.
+<p>
+ <b>Note:</b> addr must be an even integer or an 'address' error will be ge=
+nerated.
+</p></blockquote>
+
+<a name=3D"LOKE"></a>
+<b>LOKE &lt;addr,l&gt;</b>
+<blockquote>
+ Writes the longword value l into the addresses addr, addr+1, addr+2, and a=
+ddr+3. The
+ most significant byte of l is in addr.
+<p>
+ <b>Note:</b> addr must be an even integer or an 'address' error will be ge=
+nerated.
+</p></blockquote>
+
+<a name=3D"CALL"></a>
+<b>CALL &lt;addr&gt;</b>
+<blockquote>
+ CALLs a user subroutine at address addr. No values are passed or returned =
+and so this is
+ much faster than using <a href=3D"https://philpem.me.uk/leeedavison/68k/eh=
+basic/language.html#USR">USR()</a>.
+</blockquote>
+
+<a name=3D"DO"></a>
+<b>DO</b>
+<blockquote>
+ Marks the beginning of a DO .. LOOP loop (See <a href=3D"https://philpem.m=
+e.uk/leeedavison/68k/ehbasic/language.html#LOOP">LOOP</a>). No parameters.
+ This command can be nested like <a href=3D"https://philpem.me.uk/leeedavis=
+on/68k/ehbasic/language.html#FOR">FOR</a> .. <a href=3D"https://philpem.me.=
+uk/leeedavison/68k/ehbasic/language.html#NEXT">NEXT</a> or
+ <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language.html#GOS=
+UB">GOSUB</a> .. <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/l=
+anguage.html#RETURN">RETURN</a>.
+</blockquote>
+
+<a name=3D"LOOP"></a>
+<b>LOOP [{UNTIL|WHILE} expression]</b>
+<blockquote>
+ Marks the end of a DO .. LOOP loop. There are three possible variations on=
+ the LOOP
+ command ..
+<blockquote>
+ <p>
+ <b>LOOP</b>
+ </p><blockquote>
+  Repeats forever. With just this command control is passed back to the nex=
+t command
+  (line) after the DO.
+ </blockquote>
+ <p>
+ <b>LOOP UNTIL expression</b>
+ </p><blockquote>
+  This loop will repeat until the value of expression is non zero. Once tha=
+t occurs
+  execution will continue with the next command (line) after this one.
+ </blockquote>
+ <p>
+ <b>LOOP WHILE expression</b>
+ </p><blockquote>
+  This loop will repeat while the value of expression is non zero. Once exp=
+ression is
+  zero execution will continue with the next command (line) after this one.
+ </blockquote>
+</blockquote>
+</blockquote>
+
+<a name=3D"PRINT"></a>
+<b>PRINT [expression][{;|,}expression]...[{;|,}]</b>
+<blockquote>
+ Outputs the value of each expressions. If the list of expressions to  be o=
+utput does not
+ end with a comma or a semi-colon, then a carriage return and linefeed is o=
+utput after
+ the values.=20
+<p>
+ Expressions on the line can be separated with either a semi-colon, causing=
+ the next
+ expression to follow immediately, or a comma which will advance the output=
+ to the next
+ tab stop before continuing to print. If there are no expressions and no co=
+mma or
+ semi-colon after the PRINT statement then a carriage return and linefeed i=
+s output.
+</p><p>
+ When entering a program line, or immediate statement, PRINT can be abbrevi=
+ated to ? .
+</p></blockquote>
+
+<a name=3D"CONT"></a>
+<b>CONT</b>
+<blockquote>
+ Continues program execution after CTRL-C has been typed, a <a href=3D"http=
+s://philpem.me.uk/leeedavison/68k/ehbasic/language.html#STOP">STOP</a> has
+ been encountered during program execution, a null input was given to an <a=
+ href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language.html#INPUT"=
+>INPUT</a> request or <a href=3D"https://philpem.me.uk/leeedavison/68k/ehba=
+sic/language.html#END">END</a> was reached.
+<p>
+ If CONT is used to restart from an aborted INPUT command then the INPUT, a=
+long with any
+ prompt string will be repeated.
+</p></blockquote>
+
+<a name=3D"LIST"></a>
+<b>LIST [n1][-n2]</b>
+<blockquote>
+ Lists the entire program held in memory. If n1 is specified then the listi=
+ng will start
+ from line n1 and run to the end of the program. If -n2 is specified then t=
+he listing
+ will terminate after line n2 has been listed. If n1 and -n2 are specified =
+then all the
+ lines from n1 to n2 inclusive will be listed.
+<p>
+ Note. If n1 does not exist then the list will start from the next line num=
+bered after
+ n1. If n2 does not exist then the listing will stop with the last line num=
+bered before
+ n2.
+</p><p>
+ Also note. LIST can be executed from within a program, first a [CR][LF] is=
+ printed and
+ then the specified lines, if any, each terminated with another [CR][LF]. P=
+rogram
+ execution then continues as normal.
+</p></blockquote>
+
+<a name=3D"CLEAR"></a>
+<b>CLEAR</b>
+<blockquote>
+ Erases all variables and functions and resets <a href=3D"https://philpem.m=
+e.uk/leeedavison/68k/ehbasic/language.html#FOR">FOR</a> .. <a href=3D"https=
+://philpem.me.uk/leeedavison/68k/ehbasic/language.html#NEXT">NEXT</a>, <a h=
+ref=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language.html#GOSUB">G=
+OSUB</a> .. <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/langua=
+ge.html#RETURN">RETURN</a> and
+ <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language.html#DO"=
+>DO</a> .. <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/languag=
+e.html#LOOP">LOOP</a> states.
+</blockquote>
+
+<a name=3D"NEW"></a>
+<b>NEW</b>
+<blockquote>
+ Deletes the current program and all variables from memory.
+</blockquote>
+
+<a name=3D"WIDTH"></a>
+<b>WIDTH {b1|,b2|b1,b2}</b>
+<blockquote>
+ Sets the terminal width and TAB spacing. b1 is the terminal width and b2 i=
+s the tab
+ spacing (default is 80 and 14). Width can be zero, for "infinite" terminal=
+ width, or
+ from 16 to 255. The tab size is from 2 to width-1 or 127, whichever is sma=
+ller.
+</blockquote>
+
+<a name=3D"GET"></a>
+<b>GET &lt;var[{$|&amp;}]&gt;</b>
+<blockquote>
+ Gets a key, if there is one, from the input device. If there is no key wai=
+ting then var
+ will be set to 0 and var$ will return a null string "". GET does not halt =
+and execution
+ will continue.
+</blockquote>
+
+<a name=3D"TAB"></a>
+<b>TAB(&lt;expression&gt;)</b>
+<blockquote>
+ Sets the cursor position to &lt;expression&gt;. If the cursor is already b=
+eyond that
+ point then the cursor will be left where it is. <b>TAB()</b> has an implie=
+d semi colon
+ after it so there would be no <b>[CR][LF]</b> printed after <b>PRINT TAB(n=
+)</b>, this
+ is the same as with the <a href=3D"https://philpem.me.uk/leeedavison/68k/e=
+hbasic/language.html#SPC">SPC()</a> command. This command is only valid
+ in a <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language.htm=
+l#PRINT">PRINT</a> statement.
+</blockquote>
+
+<a name=3D"TO"></a>
+<b>TO</b>
+<blockquote>
+ Sets the range in a <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbas=
+ic/language.html#FOR">FOR</a> .. <a href=3D"https://philpem.me.uk/leeedavis=
+on/68k/ehbasic/language.html#NEXT">NEXT</a> loop.
+</blockquote>
+
+<a name=3D"FN"></a>
+<b>FN&lt;name[{$|&amp;}]&gt;(&lt;expression[{$|&amp;}]&gt;)</b>
+<blockquote>
+ Returns the result of <b>FNname()</b> for the value of <b>expression</b>. =
+See <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language.html#=
+DEF">DEF</a> for more details.
+</blockquote>
+
+<a name=3D"SPC"></a>
+<b>SPC(&lt;expression&gt;)</b>
+<blockquote>
+ Prints &lt;expression&gt; spaces. <b>SPC()</b> has an implied semi colon a=
+fter it so
+ there would be no <b>[CR][LF]</b> printed after <b>PRINT SPC(n)</b>, this =
+is the same
+ as with the <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/langu=
+age.html#TAB">TAB()</a> command. This command is only valid in a <a href=3D=
+"https://philpem.me.uk/leeedavison/68k/ehbasic/language.html#PRINT">PRINT</=
+a> statement.
+</blockquote>
+
+<a name=3D"THEN"></a>
+<b>THEN</b>
+<blockquote>
+ See <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language.html=
+#IF">IF</a>.
+</blockquote>
+
+<a name=3D"NOT"></a>
+<b>NOT &lt;expression&gt;</b>
+<blockquote>
+ Generates the bitwise NOT of then signed integer value of &lt;expression&g=
+t;.
+</blockquote>
+
+<a name=3D"STEP"></a>
+<b>STEP</b>
+<blockquote>
+ Sets the step size in a <a href=3D"https://philpem.me.uk/leeedavison/68k/e=
+hbasic/language.html#FOR">FOR</a> .. <a href=3D"https://philpem.me.uk/leeed=
+avison/68k/ehbasic/language.html#NEXT">NEXT</a> loop.
+</blockquote>
+
+<a name=3D"UNTIL"></a>
+<b>UNTIL</b>
+<blockquote>
+ See <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language.html=
+#DO">DO</a> and <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/la=
+nguage.html#LOOP">LOOP</a>.
+</blockquote>
+
+<a name=3D"WHILE"></a>
+<b>WHILE</b>
+<blockquote>
+ See <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/language.html=
+#DO">DO</a> and <a href=3D"https://philpem.me.uk/leeedavison/68k/ehbasic/la=
+nguage.html#LOOP">LOOP</a>.
+</blockquote>
+
+<a name=3D"BITCLR"></a>
+<b>BITCLR &lt;addr&gt;,&lt;b&gt;</b>
+<blockquote>
+ Clears bit b of address addr. Valid bit numbers are 0, the least significa=
+nt bit, to 7,
+ the most significant bit. Values outside this range will cause a function =
+call error.
+</blockquote>
+
+<a name=3D"BITSET"></a>
+<b>BITSET &lt;addr&gt;,&lt;b&gt;</b>
+<blockquote>
+ Sets bit b of address addr. Valid bit numbers are 0, the least significant=
+ bit, to 7,
+ the most significant bit. Values outside this range will cause a function =
+call error.
+</blockquote>
+</blockquote>
+
+<p><b><u>BASIC Operators</u></b>
+</p><blockquote>
+ Operators perform mathematical or logical operations on values and return =
+the result.
+ The operation is usually preceded by a variable name and equality sign or =
+is part of
+ an IF .. THEN statement.
+<blockquote>
+<a name=3D"AND"></a>
+<table cellpadding=3D"3" cellspacing=3D"0" border=3D"0">
+<tbody><tr>
+ <td>+</td>
+ <td>Add. c =3D a + b will assign the sum of a and b to c.</td></tr>
+<tr>
+ <td>-</td>
+ <td>Subtract. c =3D a - b will assign the result of a minus b to c.</td></=
+tr>
+<tr>
+ <td>*</td>
+ <td>Multiply. c =3D a * b will assign the product of a and b to c.</td></t=
+r>
+<tr>
+ <td>/</td>
+ <td>Divide. c =3D a / b will assign the result of a divided by b to c.</td=
+></tr>
+<tr>
+ <td>^</td>
+ <td>Raise to the power of.  c =3D a ^ b will assign the result of a raised=
+ to the power of
+     b to c.</td></tr>
+<tr>
+ <td>AND</td>
+ <td>Logical AND. c =3D a AND b will assign the logical AND of a and b to c=
+</td></tr>
+<tr>
+ <td>EOR</td>
+ <td>Logical Exclusive OR.  c =3D a EOR b will assign the logical exclusive=
+ OR of a and b
+     to c.</td></tr>
+<tr>
+ <td>OR</td>
+ <td>Logical OR.  c =3D a OR b will assign the logical inclusive OR of a an=
+d b to c.</td>
+</tr>
+<tr>
+ <td>&lt;&lt;</td>
+ <td>Shift left.  c =3D a &lt;&lt; b will assign the result of a shifted le=
+ft by b bits
+     to c.</td></tr>
+<tr>
+ <td>&gt;&gt;</td>
+ <td>Shift right.  c =3D a &gt;&gt; b will assign the result of a shifted r=
+ight by b bits
+     to c.</td></tr>
+<tr>
+ <td>=3D</td>
+ <td>Equals.  c =3D a =3D b will assign the result of the comparison a =3D =
+b to c.</td></tr>
+<tr>
+ <td>&gt;</td>
+ <td>Greater than.  c =3D a &lt; b will assign the result of the comparison=
+ a &gt; b to
+     c.</td></tr>
+<tr>
+ <td>&lt;</td>
+ <td>Less than.  c =3D a &lt; b will assign the result of the comparison of=
+ a &lt; b to
+     c.</td></tr>
+</tbody></table>
+</blockquote>
+ The three comparison operators can be mixed to provide further operators .=
+.
+<blockquote>
+<table cellpadding=3D"3" cellspacing=3D"0" border=3D"0">
+<tbody><tr><td>&gt;=3D or =3D&gt;</td>
+ <td>Greater than or equal to.</td></tr>
+<tr><td>&lt;=3D or =3D&lt;</td>
+ <td>Less than or equal to.</td></tr>
+<tr><td>&lt;&gt; or &gt;&lt;</td>
+ <td>Not equal to (greater than or less than).</td></tr>
+<tr><td>&lt;=3D&gt; any order</td>
+ <td>Always true (greater than or equal to or less than).</td></tr>
+</tbody></table>
+</blockquote>
+</blockquote>
+<b><u>BASIC Functions</u></b>
+<blockquote>
+ Functions always return a value, be it numeric or string, so are used on t=
+he right hand
+ side of the =3D sign or in commands requiring an expression e.g. after PRI=
+NT, within
+ expressions, or in other functions.
+
+<p><a name=3D"SGN"></a>
+<b>SGN(&lt;expression&gt;)</b>
+</p><blockquote>
+ Returns the sign of &lt;expression&gt;. If the value is +ve SGN returns +1=
+, if the
+ value is -ve then SGN returns -1. If expression=3D0 then SGN returns 0.
+</blockquote>
+
+<a name=3D"INT"></a>
+<b>INT(&lt;expression&gt;)</b>
+<blockquote>
+ Returns the integer of &lt;expression&gt;.
+</blockquote>
+
+<a name=3D"ABS"></a>
+<b>ABS(&lt;expression&gt;)</b>
+<blockquote>
+ Returns the absolute value of &lt;expression&gt;.
+</blockquote>
+
+<a name=3D"USR"></a>
+<b>USR(&lt;expression&gt;)</b>
+<blockquote>
+ Takes the value of &lt;expression&gt; and places it in FAC1 and then calls=
+ the USeR
+ routine pointed to by the USeR vector. What the routine does with this val=
+ue is
+ entirely up to the user, it can even be safely ignored if it isn't needed.=
+ The routine,
+ after the user code has done an RTS, takes whatever is in FAC1 and returns=
+ that. Note
+ it can be either a floating, integer or string value.
+<p>
+ If no value needs to be passed or returned then <a href=3D"https://philpem=
+.me.uk/leeedavison/68k/ehbasic/language.html#CALL">CALL</a> is a better
+ option.
+</p></blockquote>
+
+<a name=3D"FRE"></a>
+<b>FRE(&lt;expression&gt;)</b>
+<blockquote>
+ Returns the amount of free program memory. The value of expression is igno=
+red and can be
+ numeric or string.
+</blockquote>
+
+<a name=3D"POS"></a>
+<b>POS(&lt;expression&gt;)</b>
+<blockquote>
+ Returns the POSition of the cursor on the terminal line. The value of expr=
+ession is
+ ignored.
+</blockquote>
+
+<a name=3D"SQR"></a>
+<b>SQR(&lt;expression&gt;)</b>
+<blockquote>
+ Returns the square root of &lt;expression&gt;.
+</blockquote>
+
+<a name=3D"RND"></a>
+<b>RND(&lt;expression&gt;)</b>
+<blockquote>
+ Returns a random number in the range 0 to 1. If the value of &lt;expressio=
+n&gt; is
+ non zero then it will be used as the seed for the returned pseudo random n=
+umber
+ otherwise the fifth next number in the sequence will be returned.
+</blockquote>
+
+<a name=3D"LOG"></a>
+<b>LOG(&lt;expression&gt;)</b>
+<blockquote>
+ Returns the natural logarithm (base e) of &lt;expression&gt;.
+</blockquote>
+
+<a name=3D"EXP"></a>
+<b>EXP(&lt;expression&gt;)</b>
+<blockquote>
+ Returns e^&lt;expression&gt;. (natural antilog)
+</blockquote>
+
+<a name=3D"COS"></a>
+<b>COS(&lt;expression&gt;)</b>
+<blockquote>
+ Returns the cosine of &lt;expression&gt;.
+</blockquote>
+
+<a name=3D"SIN"></a>
+<b>SIN(&lt;expression&gt;)</b>
+<blockquote>
+ Returns the sine of &lt;expression&gt;.
+</blockquote>
+
+<a name=3D"TAN"></a>
+<b>TAN(&lt;expression&gt;)</b>
+<blockquote> =20
+ Returns the tangent of &lt;expression&gt;.
+</blockquote>
+
+<a name=3D"ATN"></a>
+<b>ATN(&lt;expression&gt;)</b>
+<blockquote>
+ Returns the arctangent of &lt;expression&gt;.
+</blockquote>
+
+<a name=3D"PEEK"></a>
+<b>PEEK(&lt;addr&gt;)</b>
+<blockquote>
+ Returns the byte value of &lt;addr&gt;.
+</blockquote>
+
+<a name=3D"DEEK"></a>
+<b>DEEK(&lt;addr&gt;)</b>
+<blockquote>
+ Returns the word value of &lt;addr&gt; and addr+1. Addr holds the word hig=
+h byte.
+<p>
+ <b>Note:</b> addr must be an even integer or an 'address' error will be ge=
+nerated.
+</p></blockquote>
+
+<a name=3D"LEEK"></a>
+<b>LEEK(&lt;addr&gt;)</b>
+<blockquote>
+ Returns the longword value of addr, addr+1, addr+2 and addr+3. Addr holds =
+the most
+ significant byte, addr+3 the least significant byte.
+<p>
+ <b>Note:</b> addr must be an even integer or an 'address' error will be ge=
+nerated.
+</p></blockquote>
+
+<a name=3D"SADD"></a>
+<b>SADD(&lt;{var$|var$()|expression$}&gt;)</b>
+<blockquote>
+ Returns the address of var$, var$() or expression$. This returns a pointer=
+ to the actual
+ string in memory not the descriptor.
+</blockquote>
+
+<a name=3D"LEN"></a>
+<b>LEN(&lt;expression$&gt;)</b>
+<blockquote>
+ Returns the length of &lt;expression$&gt;.
+</blockquote>
+
+<a name=3D"STR"></a>
+<b>STR$(&lt;expression&gt;)</b>
+<blockquote>
+ Returns the result of &lt;expression&gt; as a string.
+</blockquote>
+
+<a name=3D"VAL"></a>
+<b>VAL(&lt;expression$&gt;)</b>
+<blockquote>
+ Returns the value of &lt;expression$&gt;.
+</blockquote>
+
+<a name=3D"ASC"></a>
+<b>ASC(&lt;expression$&gt;)</b>
+<blockquote>
+ Returns the ASCII value of the first character of &lt;expression$&gt;.
+</blockquote>
+
+<a name=3D"LCASE"></a>
+<b>LCASE$(&lt;expression$&gt;)</b>
+<blockquote>
+ Returns &lt;expression$&gt; with all the alpha characters in lower case.
+</blockquote>
+
+<a name=3D"UCASE"></a>
+<b>UCASE$(&lt;expression$&gt;)</b>
+<blockquote>
+ Returns &lt;expression$&gt; with all the alpha characters in upper case.
+</blockquote>
+
+<a name=3D"CHR"></a>
+<b>CHR$(b)</b>
+<blockquote>
+ Returns single character string of character &lt;b&gt;.
+</blockquote>
+
+<a name=3D"HEX"></a>
+<b>HEX$(&lt;expression&gt;[,b])</b>
+<blockquote>
+ Returns &lt;expression&gt; as a hex string. If b is omitted, or if b =3D 0=
+, then the
+ string is returned with all leading zeroes removed and is of variable leng=
+th. If b is
+ set (permissible set values are 1 to 8) then a string of length b will be =
+returned. The
+ result is always unsigned and calling this function with expression&gt;2^3=
+2-1
+ or b&gt;8 will cause a function call error.
+</blockquote>
+
+<a name=3D"BIN"></a>
+<b>BIN$(&lt;expression&gt;[,b])</b>
+<blockquote>
+ Returns &lt;expression&gt; as a binary string. If b is omitted, or if b =
+=3D 0, then the
+ string is returned with all leading zeroes removed and is of variable leng=
+th. If b is
+ set (permissible set values are 1 to 32) then a string of length b will be=
+ returned. The
+ result is always unsigned and calling this function with expression&gt;2^3=
+2-1
+ or b&gt;24 will cause a function call error.
+</blockquote>
+
+<a name=3D"BITTST"></a>
+<b>BITTST(&lt;addr&gt;,&lt;b&gt;)</b>
+<blockquote>
+ Tests bit b of address addr. Valid bit numbers are 0, the least significan=
+t bit, to 7,
+ the most significant bit. Values outside this range will cause a function =
+call error.
+ Returns zero if the bit was zero, returns -1 if the bit was 1.
+</blockquote>
+
+<a name=3D"MAX"></a>
+<b>MAX(&lt;expression&gt;[,&lt;expression&gt;]...)</b>
+<blockquote>
+ Returns the maximum value from a list of numeric expressions. There must b=
+e at least one
+ expression but the upper limit is dictated by the line length. Each expres=
+sion is
+ evaluated in turn and the value of the largest of them returned.
+</blockquote>
+
+<a name=3D"MIN"></a>
+<b>MIN(&lt;expression&gt;[,&lt;expression&gt;]...)</b>
+<blockquote>
+ Returns the minimum value from a list of numeric expressions. There must b=
+e at least one
+ expression but the upper limit is dictated by the line length. Each expres=
+sion is
+ evaluated in turn and the value of the smallest of them returned.
+</blockquote>
+
+<a name=3D"PI"></a>
+<b>PI</b>
+<blockquote>
+ Returns the value of pi as 3.14159265347 (closest floating value).
+</blockquote>
+
+<a name=3D"TWOPI"></a>
+<b>TWOPI</b>
+<blockquote>
+ Returns the value of 2*pi as 6.28318530694 (closest floating value).
+</blockquote>
+
+<a name=3D"VARPTR"></a>
+<b>VARPTR(&lt;var[{$|&amp;}]&gt;)</b>
+<blockquote>
+ Returns a pointer to the variable memory space. If the variable is numeric=
+, or a numeric
+ array element, then VARPTR returns the pointer to the value of that variab=
+le in memory.
+ If the variable is a string, or a string array element, then VARPTR return=
+s a pointer to
+ the descriptor for that string.
+</blockquote>
+
+<a name=3D"LEFT"></a>
+<b>LEFT$(&lt;expression$,uw&gt;)</b>
+<blockquote>
+ Returns the leftmost uw characters of &lt;expression$&gt;. If uw=3D0 then =
+a null string
+ will be returned.
+</blockquote>
+
+<a name=3D"RIGHT"></a>
+<b>RIGHT$(&lt;expression$,uw&gt;)</b>
+<blockquote>
+ Returns the rightmost uw characters of &lt;expression$&gt;. If uw=3D0 then=
+ a null string
+ will be returned.
+</blockquote>
+
+<a name=3D"MID"></a>
+<b>MID$(&lt;expression$,uw1&gt;[,uw2])</b>
+<blockquote>
+ Returns the sub string string from character uw1 of &lt;expression$&gt; of=
+ length uw2.
+ The characters of &lt;expression$&gt; are numbered from 1 starting with th=
+e leftmost.
+ If uw1=3D0 then a 'Function call' error will be generated. If uw1&gt;strin=
+g length or uw2=3D0
+ then a null string will be returned.
+</blockquote>
+</blockquote>
+
+<b><u>BASIC Error Messages</u></b>
+<blockquote>
+ These will all be followed by the word Error and, if the error occurred wh=
+ile executing
+ a program, will be followed by "in line &lt;n&gt;" where &lt;n&gt; is the =
+number of
+ the line in which the error occurred.
+
+<p><i>NEXT without FOR</i>=20
+</p><blockquote>
+ NEXT has been encountered and no matching FOR could be found.
+</blockquote>
+
+<i>Syntax</i>
+<blockquote>
+ Just generally worng. 8^)=3D
+</blockquote>
+
+<i>RETURN without GOSUB</i>
+<blockquote>
+ RETURN has been encountered and no matching GOSUB could be found.
+</blockquote>
+
+<i>Out of DATA</i>
+<blockquote>
+ A READ has tried to read data beyond the last item. Usually because you ei=
+ther mistyped
+ the DATA lines, miscounted the DATA, RESTOREd to the wrong place or just p=
+lain forgot to
+ restore.
+</blockquote>
+
+<i>Function call</i>
+<blockquote>
+ Some parameter of a function was outside it's limits. E.g. Trying to POKE =
+a value of
+ less than 0 or greater than 255.
+</blockquote>
+
+<i>Overflow</i>
+<blockquote>
+ The result of a calculation has exceeded the numerical range of BASIC. Thi=
+s is plus or
+ minus 1.7014117+E38
+</blockquote>
+
+<i>Out of memory</i>
+<blockquote>
+ Anything that uses memory can cause this but mostly it's writing and runni=
+ng programmes
+ that does it.
+</blockquote>
+
+<i>Undefined statement</i>
+<blockquote>
+ Either a GOTO, GOSUB, RUN or RESTORE was attempted to a line that doesn't =
+exist or the
+ line referred to in an ON &lt;expression&gt; {GOTO|GOSUB} doesn't exist.
+</blockquote>
+
+<i>Array bounds</i>
+<blockquote>
+ An attempt was made to access an element of an array that was outside it's=
+ bounding
+ dimensions.
+</blockquote>
+
+<i>Double dimension</i>
+<blockquote>
+ An attempt has been made to dimension an already dimensioned array.
+</blockquote>
+
+<i>Divide by zero</i>
+<blockquote>
+ The right hand side of an A/B expression was zero.
+</blockquote>
+
+<i>Illegal direct</i>
+<blockquote>
+ An attempt was made to execute a function in direct mode which is disallow=
+ed in that
+ mode e.g. INPUT or DEF.
+</blockquote>
+
+<i>Type mismatch</i>
+<blockquote>
+ An attempt was made to pass a numeric value to a string, a string value to=
+ a numeric
+ variable or an attempt at a relational operation between a string and a nu=
+mber was made.
+</blockquote>
+
+<i>String too long</i>
+<blockquote>
+ String lengths can be from zero to 65535 characters, more than that and yo=
+u will see
+ this.
+</blockquote>
+
+<i>String too complex</i>
+<blockquote>
+ A string expression caused an overflow on the descriptor stack. Try splitt=
+ing the
+ expression into smaller pieces.
+</blockquote>
+
+<i>Can't continue</i>
+<blockquote>
+ Execution can't be continued because either the program execution ended be=
+cause an error
+ occurred, NEW or CLEAR have been executed since the program was interrupte=
+d or the
+ program has been edited.
+</blockquote>
+
+<i>Undefined function</i>
+<blockquote>
+ FN &lt;name[{$|&amp;}]&gt; was called but not found.
+</blockquote>
+
+<i>LOOP without DO</i>
+<blockquote>
+ LOOP has been encountered and no matching DO could be found.
+</blockquote>
+
+<p><i>Undefined variable</i>=20
+</p><blockquote>
+ A variable has been referenced that has yet to have a value assigned to it=
+.
+</blockquote>
+
+<p><i>Undimensioned array</i>=20
+</p><blockquote>
+ Aa array has been referenced that has yet to be dimensioned.
+</blockquote>
+
+<p><i>Wrong dimensions</i>=20
+</p><blockquote>
+ Aa array has been referenced with the incorrect number of dimensions in th=
+e reference.
+</blockquote>
+
+<p><i>Address</i>=20
+</p><blockquote>
+ Some function that requires an even address as a parameter has been passed=
+ an odd
+ address.
+</blockquote>
+
+</blockquote>
+<hr>
+<center>
+<a href=3D"mailto:leeedavison@lycos.co.uk">
+ e-mail me=20
+<img src=3D"https://philpem.me.uk/leeedavison/eml_sm.png" align=3D"CENTER" =
+border=3D"0" alt=3D"[e-mail]">
+</a>
+</center>
+<font size=3D"-1">Last page update: 16th April, 2003.</font>
+
+
+
+
+
+
+<!-- START RedMeasure V4 - Java v1.1  $Revision: 1.4 $ -->
+<!-- COPYRIGHT 2000 Red Sheriff Limited -->
+
+
+
+
+<comment>
+
+</comment>
+<!-- END RedMeasure V4 -->=20
+
+
+
+
+
+
+</body></html>
+------MultipartBoundary--Je08jxmrKZwxyPGWYNtddK8LLOSRxILKE1XNFFbdyL----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: https://philpem.me.uk/leeedavison/back.png
+
+iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgAQMAAAF4GH4xAAAABlBMVEX7+/vb29tGoG2mAAAgAElE
+QVR4nO19f2wlVXbmqXplv7Lz2i4bd8YQ0y4bAx6Csg67qzWDt11uTDCEzDikpeyu9o8XtjWZaJH2
+wWRD/9H0K7ubaTOazBgykVrajTCESD0REtnNSuGP0fYjPUkHCQ38s9pdLRPKMNqOlAn9GJJghHHt
+Oef+qHur6j2/7vZopShXgi7f99VX93z3q3Nv3brPBuhQBrPDsOzzuj5yssrhPQbH+N8IOCmWBH8O
+GOvSJ4Ef+2NhfxjGEEDsR4PHQo8AeEbohhHXgiuwk2nsH/MZMEK1CKgTdm1ncef04scJjPiEHQwj
+gDEkOybIxuqxOypqD2dkn0vjQQWQtXRaRka1fFoEYy5dOALCPkYXDoGwLh5GIMjSdA/g89R0JoMQ
+I6BaLBc/biEZUO1WtIGHHvQDvOL5MIZXx9pXHbzE2+KQyNq7jKWrrXort4C3FeDhnIcBRb//t3g4
+5sFoOP4yiEPEvuxJgB/9N7xwEBDAnSHN/vYzCmiGNBvzjrlu/wyKFDDZsSq2bCTwXAzeIyUDInO9
+Bh7OAanTX0OKVWp6P3fsHqvji76NXLo0Fz/yj3nUm9j1Ydif9T8D/DV9CF6sDicvthUqyE5YTHfK
+zFVuNOoQRR0ZF9SHL+nDiqcPh7/LsdDhYahQD7XwMHiRTsX+xMORSgPm3ChYx4DccRhdj8YY4Id1
+N6pwre8SdhqjcMfdAAHTMIK10wSYRmxlp9nea155D24acWdd142OTTOZxCLZ7D0RY29y3EFJ9rmM
+LBhAMgEIfl+TjRIZSDJAbAxMBrPTGH9EtQ7F/SiRCU8KMlYjgseUJ5tX/iurTrXRS3jo0+EKYafG
+yQRfWpqWte4XiSzZoUMmA3+zErhR9Bhi/XF3dP3BH2Ktv7FxT32Uoghg0HflhT8/SI2sH+NaBAjN
+kk8pIEH28B+6lFoUdr1y5SXGYvAcEAwOss+oZQyA2jQ1/MJ0NFjzpqGyx+pMgKhFsloc0uE4BOuO
+S3eqOwvRoEM3qlsB0gcBzui0CD+UpuHD+z5uRIZ9tCe1U3sq50vqxu0f0Y3UDZOpLqLSWzoLBSQ8
+nmfzqHmBdeNQZYX+V1WMbTi0RZXO4/pGgdq4RHqwFHsTdAZXOuL0q2nsOaROXL8bK+eo8lcI6UUA
+EwDfGIew721CPu7E1bQ1eSmNm7uT6d7iDlU6a7EHUaUmOOe9ZW6Sg5ytsIacdKE5T57uwYpXG/cJ
+GfZhfqpUCQnLUFPtJOQkN4lOP5udTg3EJlVrgWwSV8ompapJu1h5h/M6IlfcGloZkXi2Oj3fpJCb
+hJwTIJpElTNOH1XaTVq8uq1P9311uvNGDNQkHyg9zoHgHIixn1/YpX5OqnuiEvwaqy5s4cP3PNEN
+WeW64FxMjXIEZp2zfLqBJKeNnRWVTQnce001qQZOXSK9805QGaPKIQd05X86s7f4d9/DymnIKomT
+mhS6XFmp1biyT3DS6eiQQxj7zHnvKyKidYjqEUtXOXs+lCrthen7sjt2zoeySdN1ONEQesaI9Dj2
+oSU4ofRsYsdxpRvBiWi5n1T/xjj2mKcqYUV2R+g0uBKbJE7/Rr2G9zCrhEManh555BCsnAeKHdNh
+ekU5BGQ7ERmdOEGcPiHHNz26V5BTOwQHwLe5ElXyRJjo37f5dO5s7RBY3dJ3WnZ6GHt8v9Lt7UXs
+jxoc8ac9ef966JAWdtwuauJ6nJG87IbFiYD8ASsDo+8Vomq6ZBfMj7LillUGhZqDKcfLKp3NkquX
+Vkb5U0srRyjcb+nA9zSyUIJblgpnI/LNEmR5JbSKlT5VhuIHNd8dSd8qTl5G6X9GTr71FFX6GNBw
+VsnDw6j7puxaLAMyFBfedHSlryq/gMN87RAM4XG/rrwHG3JoAGesbzDygs+nv/UZ1OiWr0AdKzlT
+uNRkrEwcs/JhWIJaCOs4WfOYM1RXn+XKPt9sEk7s00spNP8KJxSTGID7b5wlamc8oNqJP7i3EOcc
+rA/43E7MwZhQUtGkxFdXrxlNsipHZZMGVJNeUU0KvazyG0aTPlVN2qVKUgl8u0l8oTnPapI7yU3y
+7KvXuUlU6WeVj1FliGH6xtXrokmx1aR6WZPqrFKuSXyheZ84qzrMZplK9TKVHoPXqY+Is0+fLpoE
+sSVdaZM4onzH8YXmWPl+o0nbZU26mSTlSsSpJv1rGgPjgYTTji8437yZKtcHWrlKZ6+ZfrLYbKat
+aiqvfvME3VQDZMwRXzVJzKEG+P6r8CjqqkHvE3GnKi+BgTQMZlTC0N1YqUbYv6b//TRex+TkyhdQ
+pat89YyTs9bPlVT6Q7KyqU5vK5V8mItADBfOH8c4jopK0JWbMdS4j1DIrHIXauwlv5pV/k4F540t
+upAXmkhW6ddisxKkSu1qalSqjsNxy4EhrOzPKiNvPuqDn/JRLOc5nJbcra6OOYS62NmsXhDdISoT
+UbkoOy6aoavHyDnOKokmnVCVN+vKZvvB9H5pxU+yJi3DIwJptXPukQDWcapVdb4Ns/rqj+irq1vb
+v1NX+r/6QjqJ+dTFWd38IzXm9LS9nXgGKz2s9KkyHOS81L4z/ZK6OzLbzOgmac8P4iwEK6lJ/Svk
+pcLVQXpJVMocghl/8kdiLJ7DJtHp3gr9eLeq9D1uJ1fWuEnVrEmgM5iHV/dFk+hk0SQME3zRJIDh
+WFy9ajbJSXggwcqaUdmiSpr71kCq5IiMYFfKq8PwR2mWQxxZ6Yt/RZMcJ9Yjlqzsx0jDrFJfvRZ4
+ZiUPUjTPocZ7MB5iCnoGq/HqC+5XatQiCO74BlW2qNLLxsvfxhzyetpElWoBz68pCxySH6qrz7mQ
+neGDbOcZt9/LKiWCkWGuMoiy08fB4NJDuZyDDb/77sXTkC+cmEK7btwtwDpUTsqnxGKJS2t/ImW0
+12vtD9R6HUu7lJa5mtithBp401yPQHAudWulAIa9AZ2He2ioAs6F+wOdNN2h8Pdn7KmE4hEfGj0B
+4WT5ioe7ZQGHGBjST/020IlsoEvyELBZ6OEYa2PGS6BLNdCw7wEnqWC189F/Ps9A+IDloel2I/dg
+w0B9aZ4jYyaNKXSllVsKrCLRHANdAmKLHqVwxwTw2DE4HitGjJrqvupSs1dq8GiC//q+AOJ5eeAT
+6d7F4f+JzU3Ti5MX0zYBnfSzn6JcQcARlCcUbQReW1Yt1W3sF0CH5GFgHwNpBM7aOBgBjbQhJySU
+51NmrGzBvyWKagwLirE6VCKPANYLwAYD71mmaVfMguOl74Jtjj4QQD+G6a2GHXU5kJ6jc0B86N+C
+X03Tq+SGxXQvqVxEY6A8aVtEfRcKYsqzXehrweh80ZBnK/IQGBnytFCeRrk8CUYdlURtydPuBhxS
+QB31lhF1BNNRiTyb0SwDoxLgRK/yTMwY8mxKeaISeRCo5AnDOZYnxg/G4sw9AjhpyrMpoy4zxUSZ
+PEkZ0NPyRCjPDEZNp45kpshHLeQJWZ7QdM81y3MX3pG9uCcD9tURSPK08MPDUh48e9mQ51LOPR3l
+ua0XoA/uZuaesOielRJ5Su9CQx7nTExet+Wh9WxLnhDcKTm+WfJkRcvjioGwKoERtfHbAjOUAUme
+zwSjiHpbRi1KFUx5kDEW1pgwgBUaBPLAtUgvlG6rmVdlPT5xIsbUrC6dKzqYSpzuDsaYmvcFfise
+5tTcWAizBKCcYsiDjLzc05/LFKokGRDdE0O0VX7pvavq6AyLi0y/GauoDb6MsXKpAHSsSY9qI3cX
+3jPHv/bVzI8g55LmpT97VwAfjTUwIuBiEZgK9+w25KU3ENgH8/k2oqWYQckz4aziD65bAvzWd2m5
+djnrmVcv/V26W8aIzxLWzeXTk3wPQHwqCsrbyP8q9yDjX8HnShn5naF2jwF0JFDMKaY+pdzzZySP
+BG7ipb1oHj4/AqRpAltAA9LUpU3454+/bcgTKSA9pD4Uvyce+P2pSxegyu9WtTwX4DDOI1Ixp4Bt
+OaeY0qYoysO3qxG1bwPH/YngdgT+LAGHEIhQ5/4Y2+iLZeMsak9EbWczbKMv9gdkwBkC5tOe8+nF
+v0b3DGbA2A+pZxoh8KiQuBR1QMaVb5kzee5m4FQ58A6Z9ioozyzK81p+VHByUZO44wG30ZYHE6kN
+dFq+F/RF843ZBg+aCdBLfx4VfBo0H9UDuzQFRR3KqMMFyYgJYNUAanm2rEGTVo0+u0Vf+gLQpUOU
+J+Rkn4hRYVa0kVqtgJG/wG1E4KYERgSUT68y99Bzark8AmjKE2XybEp5InFL2EBaiAhcBM7SnMJH
+AM8pAgL2nYiz/OgY8lhzCtlGo2cyoDWnyAMv0H09Q1Gv8qCZ8E2oov4fbgZczYBKHpxThAwc+t8/
+lkDaoMI3V1wuj7PnCCAVvrmg4B5wXkLgn4IConsEcJbmPTUEtCgBkDzTRjCgoi5OFcDJAxM5NOaB
+OcaWbJO4ubR7+NL+uABaReiY3VwEDI+VAJU8w4Y8lN9WCoxSHlUI+G345phk7Iv6MG/E3hg0eE7x
+u+RUJQ/OLM6OCUa31vpC/B/pjKjwPAM0i6SFZQI62WNlQ84pXAOYBePwbh7W6auybeqBk4CWPH34
+32xRhGyA7wl4BLNmS3zi8NaKmIBxd0ZVio/NqvCDevOT9KP0rfSFPT1gF4vkVlHvW3oDOq2DZsye
++6MDAv7DLGGPuLK1xNLir/aKrFyOu37udDShVVq9M1576TUYt94j8ODk2UefXaNxspvLGd0isLyY
+QG8m7KyNBXykUYnqvQDpyr0AMaslvbQR5Xn7YselT9vPvTF2LxZwC/pWegIm4A32BETGWT7ILVRW
+Cm1UweBcsQujIU++AZEFrGWMfV0vLR4L6wDF4WOP3pb98c/8LwUM8c4iYHFAIsafHQszoHhWL/o7
+ZqBvMPJJuRVnZxuHbbz0zX+kgJ4MJrF1dFqV2AjG+QHLQ0/mSY7xTy0gRd0QM6k8sFUAAkigqnZL
+gd6WBtKR3PUL3y0yJlCpW0DaMgmxAH4+oucKBtKUbZWA7wk98UGCfjp/MwPvjuW6gxGMenAUc+XN
+m/OMAChPykCeGPnc4nkVzPCRgjzqCdNJPzs9+Wr6IQEd2ry4U5CnGm/xOk81gtcEIxCj6LGJ454G
+6hLhFEgCQd0iE3fQRgIGTpM8z9ESGAK/vsbAByJ8LJKMs1KehOby8Lt0SyDwjABGvOZrB5Mxxhnj
+cqyeLG5l96SQTasLweTlkc8IyWT6WQSv4rDGe4ppb2eJPMiIc9s8Y10Eg/8LDXloEmzLI6aFLE8k
+gqFOPRsktJ8oflYAl8klAng8VJfmTQFbQcLyrAngUozyNPLyEHDDZiTBo0a5PMVgcozqESotyCOB
+uo37MFKXr/YijxdZ7ollMKqvUZ6xPGNIj/RCnrqSJ0J5JmQbYy1PTFTMWI+/nskzViJPKIOJbkge
+0z3iKbi6VMp4tijPUpk8mHG6yYO3gi+BGyiCkidmeaKlSLsHby6/4J4tJc9SaAougRVTnq0ufT3e
+qzzzpjwtyRiWMM7Hxs0VSXnCEnnmM3kiKU9k3wpjecaQVjxeJnnQFOuZe3zVRi0PKEa89EbGGAjg
+fSU311JpMNclj3JP0kGews3V6iBPIwuGcg8l0o1SefTNFbM8raXYvLmK8tCqzFnbPQ9kt6slTyyD
+KXPP9cnTLfdgMH0rveSe+ZdxWpjJs2HLs5zdXMQ4K+Rp4f9fIXlo5MrkCUrkKb1dwZDnci/BXJM8
+v94L41lwVn+9N3nACGbDDobcYzDKmwukPHQXxjL3tMrcExnyFG9XkmeXgPUe5KmcA14tNeXZk7Ne
+Sx4Ggs0oi8G4AY4EWvIYRQJfAfh3DKS9BhQMRy2fB75jAFHbX2Egr5fhzTVEjFLttQgKwfCmBM34
+iwL4Bxkju6dLMEVGh15CXEz3kupnzRTdQ9PBRb4/TXmcOFuB86vidUR1djWyGKWOrpJHTsagOsrz
+lhwwLAGG0bEtmuMawNjJFE7UARngRxHOmgWw8LxjANMfG4zdgGD29WRn4DA5ajLdbVDz1Ks43UYn
+AwaC0WsECsi3AqioM6BY/jOAUHVKgZgpMJjlDBgZjGABI5aHgcO5WLJXldV5wRg1lsuizoDntDzL
+ZToaQHlz7QjgAuSKamNFMXpPMpDewZkLGoENZHkU0FoksYEPkDxPaWBnRsw9Q5AxUpnMB/PpRWLE
+JBU9ZQEXS4GGPPPSEM0i0JZHMP4TOJmX5/5zh/6VdI8EznLcakHZCKbPt+RxXmsB3NFfAhwI4DsR
+9M0IUwjGmTIgXvpCDIe2FBA9PQxll4a0jUAnFMD70vTq5av0zrRMcCGPZpwtZ5Q3V/pUYgpeAgzA
+Tvb086NbZUD5tT8JdLbwn9WkAyNYuQcZOwOH9KU7yjNvMd5HSWQ41d9CLJMnz+hKoMiUlT8h93yL
+3GO0UV96LEj63sN/v2vcXFYwYQPoG4AE9HidgtwDzR/FoIG8C3sVgX3344ET/F+PpiLnxyvn7oGZ
+h6IMyO7RjAMIRBbYHCfG8JciftGdC4aGDyfgYX5eRH364VgDlTwfp7xOsRe8L9Yp2jqYMsat7EGc
+GCnTGUBLnmy8LjJScbcazmE6OCufFcIs9yig80dktKThcIeoB/FZ1pFmexnjLAJHE8mo5o/EeA/A
+I3EnebLxunLOsxhJnllyT246k14qkScgxnqe8U+aV/Ly8GuuZF95OPdsNbY5GD11jYvyxDAOYdLY
+rpjyrCEj6rUUgacZ6c0ZAYM8I8rzSy3NOK7kSQryCEY1vcYpb+KTPLnJ8J6TCwaUPIXJ8L9geSbT
+JHtiHy+Rx2nlpgoAF0iesLE9GoI1s9djswIGEpi5hx7EBfAPMBgFdELFSFdUD+Ib4tK/Te/qsmC0
+PJEZDAFf1Iy3ph3kSYvBFBnFk2ZVugcyeSAvT6tMngdkat4eNfv62ZGW/rqsBL4RoEC/kLA86kE8
+pCdNOQNUiRT6CLgqGLN1imenWpJvqCwYtYzDD+ISOBhl8syWygNd5GnlGOXAruWZV/JE5joF7zXK
+UjN45J5HIynP2WydAoEuzs0yIPH9QmTJw6tc/F04A9jHMx+LkeQRjFumH4s315IMxjF6huWBDvKY
+QJvRWqcoADu5h4AD7Qz4AOUeN5TBqEQqggG/0p+5h7M43Vwh3jOvZOsUAvjnGsivcUYFY5i5RwAP
+ffT3ElizgrHWKTiYyp4EOkqeuNw9Fd5uIopgLD6IC+DfZ0BZTHk49/DSeuXPNfBwKP4VuceUx4sR
+2K+BwawE8q9NUesUayMt1TI9i9gyGY0HcWY0gN2DMYDN9Gp6NS5Zp6ATTWC8DyMJHjGwszxxpSWA
+YAIpkVq5B4H0NbKC4Nv8Ivll+Xwt5Am9MmA+m8l6Lyp0YTEYyoi/mQcqeSYN92w6XRjBYCRggVHJ
+A1oe3mu3Khl9mKNXFk4EyXESyt8EjpoT6XAbP5gRQDc+DHfBLAF5nQI2gdcp1n5eMq4IRrwZb4eH
+EbjSSnidYkUx6jZK4K3RP4UvE1NLvU3JB3M8H8y2WKdIKqlYp+BLh/gEw8CKfhSN38vkES/E6DDU
+jK5UJIb3JLP80gsDwxnVRr87MHPPxLoGJnaTGUh+FMCB9Vi8TNwqBfLWNGGzCo6NR3D20d4P6GaM
+gyXACVo/yUWdeHERyIWBMe0VjSB0yxnLgG3HBmZtblsflLxEViUHbHYEMnf6SXolfStd7LZPqmUD
+9ymZPPnX+52BPTN2LYenewQGd/UIHHupR2DPbTRurv0oeyzZ98xaBwT8x/KTKNVbS36Vxo0Ud6Dj
+bpvrJHxo6GAJq+98eiYZjg+Wsz3ZuoHTK4WaGyCkZ9rinqrK9YfsFwmrt+6bca+N0B0YOWDChw6Y
+sPrO3sFqCDfUy4Iw93XeayKs2T8KQo9+s58xQl5LyLmBVREunPoK/V6l+3rm2Y9wdDYmwuvo3w6E
+E7N8NAjNAyK891R7Ek7xbzM7CELu5cWYbrnx4inXQQgZ4TWXzoQY8kESLtAsdPipdvGM6yQ8TlOh
+gL4ffVCEEf7vpj88OMKTO6jh0G+ZIXcn9+PuhCW9PB91I6z6XQgXMkLDh8tx1xZudiHcoWwjbGPc
+KfbTRqGEnQmdHTh6kp8/J/W93PkJIiuxJDx7dm10pmUT+jMbeNSXNarzs0vu4YQIH3Teuy3OEc4T
+YdW9PkJqYZQL+ckGanjr9zThaeiaeJwdB4YVYV7DisO7RW3bnO7+S+icHbczIViEC5ow7ErodSds
+Kttg0lGE3Qq1oSvhUx9QK/urSBhnhNaI3Ux3s5MNwmbaNu4GRXjP4yEe9AUmob8sCadYzac+fEcS
+HgtNwpM7byPLkauJRXjXMhFWR0zCoyuS8BP6DKaXLwhC58eRSTjzy8QSntiwCH/rA9Lw1u9nhIux
+LxcRIdyq7DCh/Hkpqn6YEc6vBkcB7jxuE4LuZUVIreH5Q4ViiQAm2qvcYVXiWcsIn/wkOQo7E3+T
+dCBclIQ0EvIMp0o5ks8Vnw3jmU5GSLimo7+hIQkn08w2WkM8/gtYhztF0qWZ+OKm48GXEjB7GTTh
+nEF46GiDXuz3D9uEwxswD7clvOpBHTQZQAMebBUIMWSQd5YkDMZCUpze+GvCyZO8+RtvmPcvtYiw
+fVKs+Dkfn2kZhE9vUwhH2409g9AZmyFC2m2iCb3p45JwaSQkQuxlsYR47PbIIAw2qNZftnr5yFGe
+25i2MQgfGml1JQyLhKILLdtgyCeHCXRb8umlTQ65PUmED77+8bnYDDmJUEMM2SDcNQilbZqyl0H1
+Mn9GAxP3Mjmd/GP2stnCzrYRhLSUZxGW2YZ3gGS2qeNBv1uwDYVMA+ApaRvobBv8x7QNKds3aGk4
+JzulfdKBXdSwrm0DloakHmm4CKZtiLA6afVyIAmXLzDhcqh6ecokDJ5l7bCXDUK0DWeby9dFKHzo
+m4SseME2p6SG7bYIeUfbxrpTkoRtkxiEPdhm1+7lUttYLazsdrMNOHs2YaltmgbhQt87eNA/1NE2
+uz3YxmzhqM/ZxrE0nFe2qQsNG9o29q0nsk29bRJOBCXZxle9HIpeDlQvh7GVHOgMf3lq1SS8N1wt
+ZpsQP37eIIwgQLGQcBpK0pdNCJ1s82OyzU5mm9WOtvkk+cnaRj9J5WwzaNvGafVoGxowSm3zsG0b
+p9ajbYCnBX1uwTbjZJuGto0Tl9gmBLZNq0hY9a1e9pRtAtHLvraNPaZscS+HkUXY5kHq3QLhS0QY
+aUJnpkj4bLuMsMw286jh1w3bNFDDH5JtciE3hG2sO6V9wLahGVa5bd7M2eZ8b7apJjhgoG1qBds8
+n7PNTG+2qSY8g+3zLA0pOXzZsE3Av90ZbRPbGlKT0TZJkbDqWb08q2zji15eVbaZjkuSQxhahO2d
+om1OAf15hYxwBwnpxdixO1tlhLFFWGabCdRwj2wjQ56fpPSFtlkrzTambaoHbRtqYU/ZBsZ6tg0/
+gBenxLlsA9/u2TakbN/hwpSYs41IDjwlnitOiTvYJsKD6uHCmMK2WdVjCkDJmBKKXg5KbPOXhWxz
+ngh3smwzV5K+4jLCTtkmJtvMZ9kGitlmu8222Un+/9jmOuc20ja03HcwcxvsZTqi5T7z1stNiefV
+3CZ369G/aJuwSEjLfUYvR8o2ckyJlW1mbNtEwL28ZdumIZf7DMLlXPra0IRRCeFUuyfbgJFtGmpK
+XG6bRqltxiXhgdnGPzDbUDRHJqF5YLZZpZ/W7Pmhso289XaUbXLzw5IpMRLSNfz18rlN3HVu8yy3
+JT+m4IABp47Yo56eY290nWMrwu7Z5iiGHORsEyrbrIHTlgs4ZJukS7YZVoTDdi8XbNMyN5V0sU21
+JQnBJszbxi6ltqEp8ZFqNTEJy23zuvHdIJD6lNgmop82DULKZdI2PATQgp6wzeVvmoT/8t2WPCpm
+G/85g5BymZkcaEFP9PL67ZFBGL0RlBFytjkyZBBSLjPn2LSgJwiftwi/+J1SQtnLBiHmMmUbfjSb
++JtE2Wbd0Bnu/T+to0VCbZukvJdFp3Ts5dIWCttoQnv90EHCerZ+yGWh8nvfF283ygm5ECFvswRr
+hZNtE0G2wsnth2ddscZXErJJSL+MTI/PohBhZScX6CT9TYy9kx/8Gp1MpurYwpm8RsrYOcJz7+CM
+d/rxVVKWTJXrFC7DbVWZYywj5Biml3nzL5nKJNz3VUc5IVLuXP3BX8hVYvPB5/oJqZk624hf1UcD
+xHURrsUWYWASWiUqaljaKWvcwma6I1eJF2mXs03oqUBypbyX1/gfzNjAttkrIeQH8JLXb90Ig43M
+NgVC9P1iq8gHcgjIEZ6JBSG1UNhmst1rL+/uFqpakvDp7cw2QdCrD0sIjbykbPPzmzdG2LIJ5xa9
+rIWJ+OSbpfqVaqgTnWGbxc0codNp40RJL2vCp99/DZRt8i3suBOjG6GYirBtwnwLoeOOr3g39/4O
+CRdNQrZNkVCV/BdlSzrlyhW5CfLpZKvENjnCyWsgBCPb5FoYXiNhyyacs3vZOdMShN60ntPp4hRs
+41OnPDsqTtHZxiJ8IBKfTs70TDjViuHo/Edsm3//wZ5xLxPhn0UC6o3pmft+hGujNHVd2SK51pbN
+bIOE1afi7KVIj4R8sMx/STIcWI5NQjE7oB9oFjDeKyHC/vv8D/lV5kdXY7uFRBj7oSseoXonJGQ2
+SNkD/U5cid2j9MvCeyPMDVK5mYMT8wVduG/ng14JVQvLpsTgHJOEI9PHeybMSnFu41xu3Qhhfm6D
+tnmitUOER4dOzvZIeMZA5ec2wjZEyL1szeX2JyzObbCFFmEvLWwXB6kcIYiQlW0w4+gsLQmNJKvv
+FCyByjYWIWYbZZuTTHjr7oLe58CEwUa2z4EJvyYTvKezjW0bUL08w4T+c6N6nwMTntrM9jkw4TP0
+zZN7jqs9n3s5wlakCOclofqCWvjqNuw2IViVPy9F1TYRniPCu4KHgiZl3OkR2OsAAAakSURBVL28
+bb4aK9s8yYTVhXvVU4CDLSRk9hQQEyE+VYB3BxJKnbvZpsUY9ZxSQULaq5ntc4jNTmmwhk4PttH7
+HBz1AK72OVi9LGxTJJS2mcyyjdznoAnFPofLtFtJErY6Ezpr0jYTJznbVP9yCMzVOdD7HKrNWzWh
+uHBpyM4yfVx3wRfJwfGfU4T8fhn0tgR35uFY+RAJT9VbJZ2ChN9D29RiFwZ6JnzGJcJgNSolFLap
+o4Yi21DI5gtryPY5vNUnOuUc//7hoFFGWJ5tuqyKjJMP3yXCp3/Q7mybAT1I7bNuw/uNdad0tg0S
+StsclbaBnG3k6pyaH3YhdM5J20xOkG1Om7apCw2zfQ6xTVhuG/r+2hBt2+VePm32ssg22bYE2nlH
+tqkJ2/By39wTecIWjXqhQbi2H+EzHvfyL/Pq3OxI7r1e9QnUcJhuvYlZEfKEts2OCHknW9RlwnOC
+8AkmnF+y3t4WbLPPGixlNW0bXu774JP8C2vbNvutErcgb5tKgRBD7tO2KSzq2rahBckcYf6VuvN+
+rGxzUmhYO6Js0xAa5vY5SMJmSncK/bl7m9Dd0r08I3r57F3mYhoYa7Bi6V4SLnyFNDnyz+p5wpfw
+4+GECOcNwj31cgHEPgfjhbUkjNb4SQpn6DZh5TLNbUjDiSdFyJMLqOGsbRvxwvocmIQDTOiZhLuq
+l3u2jUE4/yFPiU/mNRSEBdskOduMZS8XaEzs3Ms4UmPIqCHaZtewzddytjHePBq26SsS/sZHZ+RU
+ZPiWBWkb+lPgrZxtxJvH6ppFeDTIT4nxkxcdOUgFoUwOZ/XSvS96Wb8LmBrkDY2aEOtyU2I8eHEK
+xCAVuCbh8zYhjo2aEBbT3RfEk2RhSgzw4UdXWmKQGlqQd8rkUbU9RoWMthlj27yl7lbZwvyUOLNN
+fA22yQiLU2JF6G/lbfOmbRu1z6FiEXbYb5Ps0KNZzjbP27Yx9zlQWYszwjmL0El+LlG2mZO2oTeP
+X1YvrMHY53CmXxPCybnfSIpTYvzf5gNyBhuEgexl/QppVfSy3ucw5WaE07PxpjjeswmTZxShqwhp
+M56rXliDsc/BIpz3E9nTdshvuGpKvHDKsM2eemENxj6Hc2+tZSF/8GGrQHh92UYQGqUs20DeNoOd
+s013QpFtsilxYZ8DX8DKNt0JMdvoKfFJwzbjuSmxzDYmYfT8svidG7ls0yd72deDlGu+sAZjn8OU
+YxG+d2erSOi/eLskHNCDFBGez2Ub3ucw5ZmEK88/uGsTgsg20jaT9CQFZJsJtc/ByDaQtw2VavqO
+TbiQ7+WFXt4vU4n14tqeSQh5wp7egJMNdnQLnSKhfJISx/vNbZhp2BfnV1HDAuHHTTlISUK0jUoO
++tbTcxtpm9EVSdgqEjqVmcgixF4eM19Yg7HPYQpEp9QkoQclhF94uUB41HxhDcY+B0UYrGQRFkK+
+8h9sDdE2Q+YLazD2OZy7LEI+7HchzPVyT7YZ7dLCOhjrh9CjbcyQIUcYAWTbvqFH2xzaoPObytuL
+i9kvYii8VrSmxGp+qG3jZCHPD1st7FjUmFI+t+kThP4GfsK/YU5r2JVQp6/8HHtqWCYHn/7YlJBt
+sr0Pocw2+oU1GPsczl1aU/fyTfRHJqkEwT6EfNXMNt+nn0uyzW2OuBfCzX0I87YBm1DPbe73wOmJ
+0LDNtv5jinnbIOEZrIo/vdjoFDL9spB6woR6n4Nz+Rwl5myfg5wSU2mdiZBw6qbwZ0xCB3H0FUb6
+FRmPtGDqp+tEmO1zWJ9eAjFHVb2sxxQQhKNbM1bIx0J+HeUvg4OumqKXGqeNfQ7P30YtzPY56GxD
+hBRy40p9xGhh03Hr4N+Epz4ClffrsLP9X3aRUO9z2P74HM6/wdjnoLINFtUppobWDS5KWPg6CZei
+bUDZxgy5xi/LGuKvV9IAm2DuyX1PSnzXO9vnoO/9m2CZjW3bpkBY+CaXiCNb4dQt9EH+wRAj5Af5
+Lz+HfH/zeRHwd81sFZrWT5rQgVMRHxj38rGwjBC6luyVtEpfRrZZiigDTWd+XL4WQvVK3ySMD5gQ
+oJxwvkfChP+PPbof4XJ0vYQ4ylxK6ZdbpW0cas7x30c63f3bwfmtEVw0YcR/oxsfTyBAjrP8VgIJ
+7+3Mtw9hWQv12HgtpUsLboywrIWL18G3140QSrNQj6UDYbDPaV1Kyb0M5gvxAyK87vJx82AJcXa9
+fLCEX3j5YAlxdn3AGpaOKTdSSke9Gyml4/KNlGahJvte6T+Wfxjl/wEGtCJCVtE15wAAAABJRU5E
+rkJggg==
+
+------MultipartBoundary--Je08jxmrKZwxyPGWYNtddK8LLOSRxILKE1XNFFbdyL----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: https://philpem.me.uk/leeedavison/epc.png
+
+iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAAH2U1dRAAAAFVBMVEUDAwP6+voDA/r7AwP7+wMD
+gwP7A/vcs5vMAAAAwElEQVR4nK1RQQ4CIQycZatnevCOTbyvovceeID+wP+/whZYI5t4MJEQOkyn
+0xKABfFS9w04f+yiGRAZDl4A8kTiJSFIGtH13hBhYsxgRAdwkAzsvzM6MNo1UObsadIp2qAGqBSd
+c20RyTUHmCYcLZWMebomiJx+0dTuVUOPpsGqEdfAu7tPUX8Z22BGTh6JFG3lFqhfS49MaCWe8BLe
+pU5k6R4htVLZeNA/PHTj4czgga0H3h7r29Y5/B9qSZvjBR+AHVxHEp2cAAAAAElFTkSuQmCC
+
+------MultipartBoundary--Je08jxmrKZwxyPGWYNtddK8LLOSRxILKE1XNFFbdyL----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: https://philpem.me.uk/leeedavison/eml_sm.png
+
+iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAAGa2tLEAAAAMFBMVEX6+vr6+ssDAwNjY2MDA4Mz
+A8ozY/pj+vpjm/tjy/szA5oDm8vLAwP3AF9fX/eXAAAMJVUIAAAAk0lEQVR4nGNgZzBkYGAQZLAW
+ZDBSYeBgYAgUZGAUZFCaxMCazsXAYOIieJDBUFC0kIGBqw2okLMASExrYGDgDhQUYmBxFPwEVA1k
+MQqKOzEoKYU7MTA8A8oyMHBMzwLRxqE7g42NjY0YDMK2CAoK3hFiMGAQBAEgA6hRNC1FCGg8EISX
+CAGVczVETGMBaWdYEgYkAK98F1Pm0reyAAAAAElFTkSuQmCC
+
+------MultipartBoundary--Je08jxmrKZwxyPGWYNtddK8LLOSRxILKE1XNFFbdyL----
+Content-Type: text/html
+Content-ID: <frame-FB8FCFC9105E6AF752AFA1D869F93FD4@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3DUTF-8"></head><body marginwidth=3D"0" marginheight=3D"0"></body></html>
+------MultipartBoundary--Je08jxmrKZwxyPGWYNtddK8LLOSRxILKE1XNFFbdyL------
