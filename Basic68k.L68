@@ -1,6 +1,6 @@
 000005CC Starting Address
 Assembler used: EASy68K Editor/Assembler v5.16.01
-Created On: 22/08/2022 10:03:50 PM
+Created On: 22/08/2022 11:22:51 PM
 
 00000000                             1  *************************************************************
 00000000                             2  *                                                           *
@@ -6893,7 +6893,7 @@ Created On: 22/08/2022 10:03:50 PM
 00003588= 00000000                6889      dc.l    $00000000       * atn(2^-32)
 0000358C                          6890  
 0000358C                          6891  * constants are normalised to n integer bits and are tanh(2^-i)
-0000358C  =00000002               6892  n     equ   2
+0000358C  =00000002               6892  n   equ 2
 0000358C                          6893  tab_hthet
 0000358C= 2327D4F4                6894      dc.l    $8c9f53d0>>n        * atnh(2^-1)   .549306144
 00003590= 1058AEFA                6895      dc.l    $4162bbe8>>n        * atnh(2^-2)   .255412812
@@ -6928,7 +6928,7 @@ Created On: 22/08/2022 10:03:50 PM
 00003604= 00000000                6924      dc.l    $00000002>>n        * atnh(2^-31)
 00003608= 00000000                6925      dc.l    $00000001>>n        * atnh(2^-32)
 0000360C                          6926  
-0000360C  =26A3D110               6927  kfctseed    equ   $9a8f4441>>n      * $26A3D110
+0000360C  =26A3D110               6927  kfctseed equ    $9a8f4441>>n        * $26A3D110
 0000360C                          6928  
 0000360C                          6929  * command vector table
 0000360C                          6930  
@@ -7241,7 +7241,7 @@ Created On: 22/08/2022 10:03:50 PM
 000038E2= 0002                    7237      dc.w    key_plus-tab_star   * +
 000038E4= 2D FF                   7238      dc.b    '-',-1
 000038E6= 0004                    7239      dc.w    key_minus-tab_star  * -
-000038E8= 2A FF                   7240        dc.b  '*',-1
+000038E8= 2A FF                   7240      dc.b    '*',-1
 000038EA= 0000                    7241      dc.w    key_mult-tab_star   * *
 000038EC= 2F FF                   7242      dc.b    '/',-1
 000038EE= 0006                    7243      dc.w    key_div-tab_star    * /
@@ -7408,7 +7408,7 @@ Created On: 22/08/2022 10:03:50 PM
 00003B53= B4 00                   7404      dc.b    tk_div,$00      * /
 00003B55                          7405  tab_less
 00003B55                          7406  key_lshift
-00003B55= 3C BA                   7407      dc.b    '<',TK_LSHIFT       * <<
+00003B55= 3C BA                   7407      dc.b    '<',tk_lshift       * <<
 00003B57                          7408  key_lt
 00003B57= BD                      7409      dc.b    tk_lt           * <
 00003B58= 00                      7410      dc.b    $00
@@ -7417,7 +7417,7 @@ Created On: 22/08/2022 10:03:50 PM
 00003B59= BC 00                   7413      dc.b    tk_equal,$00        * =
 00003B5B                          7414  tab_more
 00003B5B                          7415  key_rshift
-00003B5B= 3E B9                   7416      dc.b    '>',TK_RSHIFT       * >>
+00003B5B= 3E B9                   7416      dc.b    '>',tk_rshift       * >>
 00003B5D                          7417  key_gt
 00003B5D= BB                      7418      dc.b    tk_gt           * >
 00003B5E= 00                      7419      dc.b    $00
@@ -7425,218 +7425,218 @@ Created On: 22/08/2022 10:03:50 PM
 00003B5F= 9E 00                   7421      dc.b    tk_print,$00        * ?
 00003B61                          7422  tab_asca
 00003B61                          7423  key_abs
-00003B61= 42 53 C0                7424      dc.b    'BS',TK_ABS     * ABS
+00003B61= 42 53 C0                7424      dc.b    'BS',tk_abs     * ABS
 00003B64                          7425  key_and
-00003B64= 4E 44 B6                7426      dc.b    'ND',TK_AND     * AND
+00003B64= 4E 44 B6                7426      dc.b    'ND',tk_and     * AND
 00003B67                          7427  key_asc
-00003B67= 53 43 D3                7428      dc.b    'SC',TK_ASC     * ASC
+00003B67= 53 43 D3                7428      dc.b    'SC',tk_asc     * ASC
 00003B6A                          7429  key_atn
-00003B6A= 54 4E CB                7430      dc.b    'TN',TK_ATN     * ATN
+00003B6A= 54 4E CB                7430      dc.b    'TN',tk_atn     * ATN
 00003B6D= 00                      7431      dc.b    $00
 00003B6E                          7432  tab_ascb
 00003B6E                          7433  key_bins
-00003B6E= 49 4E 24 D8             7434      dc.b    'IN$',TK_BINS       * BIN$IN$
+00003B6E= 49 4E 24 D8             7434      dc.b    'IN$',tk_bins       * BIN$IN$
 00003B72                          7435  key_bitclr
-00003B72= 49 54 43 4C 52 A7       7436      dc.b    'ITCLR',TK_BITCLR   * BITCLR
+00003B72= 49 54 43 4C 52 A7       7436      dc.b    'ITCLR',tk_bitclr   * BITCLR
 00003B78                          7437  key_bitset
-00003B78= 49 54 53 45 54 A6       7438      dc.b    'ITSET',TK_BITSET   * BITSET
+00003B78= 49 54 53 45 54 A6       7438      dc.b    'ITSET',tk_bitset   * BITSET
 00003B7E                          7439  key_bittst
-00003B7E= 49 54 54 53 54 D9       7440      dc.b    'ITTST',TK_BITTST   * BITTST
+00003B7E= 49 54 54 53 54 D9       7440      dc.b    'ITTST',tk_bittst   * BITTST
 00003B84= 00                      7441      dc.b    $00
 00003B85                          7442  tab_ascc
 00003B85                          7443  key_call
-00003B85= 41 4C 4C 9B             7444      dc.b    'ALL',TK_CALL       * CALL
+00003B85= 41 4C 4C 9B             7444      dc.b    'ALL',tk_call       * CALL
 00003B89                          7445  key_chrs
-00003B89= 48 52 24 D6             7446      dc.b    'HR$',TK_CHRS       * CHR$
+00003B89= 48 52 24 D6             7446      dc.b    'HR$',tk_chrs       * CHR$
 00003B8D                          7447  key_clear
-00003B8D= 4C 45 41 52 A1          7448      dc.b    'LEAR',TK_CLEAR     * CLEAR
+00003B8D= 4C 45 41 52 A1          7448      dc.b    'LEAR',tk_clear     * CLEAR
 00003B92                          7449  key_cont
-00003B92= 4F 4E 54 9F             7450      dc.b    'ONT',TK_CONT       * CONT
+00003B92= 4F 4E 54 9F             7450      dc.b    'ONT',tk_cont       * CONT
 00003B96                          7451  key_cos
-00003B96= 4F 53 C8                7452      dc.b    'OS',TK_COS     * COS
+00003B96= 4F 53 C8                7452      dc.b    'OS',tk_cos     * COS
 00003B99= 00                      7453      dc.b    $00
 00003B9A                          7454  tab_ascd
 00003B9A                          7455  key_data
-00003B9A= 41 54 41 83             7456      dc.b    'ATA',TK_DATA       * DATA
+00003B9A= 41 54 41 83             7456      dc.b    'ATA',tk_data       * DATA
 00003B9E                          7457  key_dec
-00003B9E= 45 43 88                7458      dc.b    'EC',TK_DEC     * DEC
+00003B9E= 45 43 88                7458      dc.b    'EC',tk_dec     * DEC
 00003BA1                          7459  key_deek
-00003BA1= 45 45 4B CD             7460      dc.b    'EEK',TK_DEEK       * DEEK
+00003BA1= 45 45 4B CD             7460      dc.b    'EEK',tk_deek       * DEEK
 00003BA5                          7461  key_def
-00003BA5= 45 46 97                7462      dc.b    'EF',TK_DEF     * DEF
+00003BA5= 45 46 97                7462      dc.b    'EF',tk_def     * DEF
 00003BA8                          7463  key_dim
-00003BA8= 49 4D 85                7464      dc.b    'IM',TK_DIM     * DIM
+00003BA8= 49 4D 85                7464      dc.b    'IM',tk_dim     * DIM
 00003BAB                          7465  key_doke
-00003BAB= 4F 4B 45 99             7466      dc.b    'OKE',TK_DOKE       * DOKE
+00003BAB= 4F 4B 45 99             7466      dc.b    'OKE',tk_doke       * DOKE
 00003BAF                          7467  key_do
-00003BAF= 4F 9C                   7468      dc.b    'O',TK_DO       * DO
+00003BAF= 4F 9C                   7468      dc.b    'O',tk_do       * DO
 00003BB1= 00                      7469      dc.b    $00
 00003BB2                          7470  tab_asce
 00003BB2                          7471  key_end
-00003BB2= 4E 44 80                7472      dc.b    'ND',TK_END     * END
+00003BB2= 4E 44 80                7472      dc.b    'ND',tk_end     * END
 00003BB5                          7473  key_eor
-00003BB5= 4F 52 B7                7474      dc.b    'OR',TK_EOR     * EOR
+00003BB5= 4F 52 B7                7474      dc.b    'OR',tk_eor     * EOR
 00003BB8                          7475  key_exp
-00003BB8= 58 50 C7                7476      dc.b    'XP',TK_EXP     * EXP
+00003BB8= 58 50 C7                7476      dc.b    'XP',tk_exp     * EXP
 00003BBB= 00                      7477      dc.b    $00
 00003BBC                          7478  tab_ascf
 00003BBC                          7479  key_for
-00003BBC= 4F 52 81                7480      dc.b    'OR',TK_FOR     * FOR
+00003BBC= 4F 52 81                7480      dc.b    'OR',tk_for     * FOR
 00003BBF                          7481  key_fn
-00003BBF= 4E AA                   7482      dc.b    'N',TK_FN       * FN
+00003BBF= 4E AA                   7482      dc.b    'N',tk_fn       * FN
 00003BC1                          7483  key_fre
-00003BC1= 52 45 C2                7484      dc.b    'RE',TK_FRE     * FRE
+00003BC1= 52 45 C2                7484      dc.b    'RE',tk_fre     * FRE
 00003BC4= 00                      7485      dc.b    $00
 00003BC5                          7486  tab_ascg
 00003BC5                          7487  key_get
-00003BC5= 45 54 A4                7488      dc.b    'ET',TK_GET     * GET
+00003BC5= 45 54 A4                7488      dc.b    'ET',tk_get     * GET
 00003BC8                          7489  key_goto
-00003BC8= 4F 54 4F 89             7490      dc.b    'OTO',TK_GOTO       * GOTO
+00003BC8= 4F 54 4F 89             7490      dc.b    'OTO',tk_goto       * GOTO
 00003BCC                          7491  key_gosub
-00003BCC= 4F 53 55 42 8D          7492      dc.b    'OSUB',TK_GOSUB     * GOSUB
+00003BCC= 4F 53 55 42 8D          7492      dc.b    'OSUB',tk_gosub     * GOSUB
 00003BD1= 00                      7493      dc.b    $00
 00003BD2                          7494  tab_asch
 00003BD2                          7495  key_hexs
-00003BD2= 45 58 24 D7 00          7496      dc.b    'EX$',TK_HEXS,$00   * HEX$
+00003BD2= 45 58 24 D7 00          7496      dc.b    'EX$',tk_hexs,$00   * HEX$
 00003BD7                          7497  tab_asci
 00003BD7                          7498  key_if
-00003BD7= 46 8B                   7499      dc.b    'F',TK_IF       * IF
+00003BD7= 46 8B                   7499      dc.b    'F',tk_if       * IF
 00003BD9                          7500  key_inc
-00003BD9= 4E 43 93                7501      dc.b    'NC',TK_INC     * INC
+00003BD9= 4E 43 93                7501      dc.b    'NC',tk_inc     * INC
 00003BDC                          7502  key_input
-00003BDC= 4E 50 55 54 84          7503      dc.b    'NPUT',TK_INPUT     * INPUT
+00003BDC= 4E 50 55 54 84          7503      dc.b    'NPUT',tk_input     * INPUT
 00003BE1                          7504  key_int
-00003BE1= 4E 54 BF                7505      dc.b    'NT',TK_INT     * INT
+00003BE1= 4E 54 BF                7505      dc.b    'NT',tk_int     * INT
 00003BE4= 00                      7506      dc.b    $00
 00003BE5                          7507  tab_ascl
 00003BE5                          7508  key_lcases
-00003BE5= 43 41 53 45 24 D5       7509      dc.b    'CASE$',TK_LCASES   * LCASE$
+00003BE5= 43 41 53 45 24 D5       7509      dc.b    'CASE$',tk_lcases   * LCASE$
 00003BEB                          7510  key_leek
-00003BEB= 45 45 4B CE             7511      dc.b    'EEK',TK_LEEK       * LEEK
+00003BEB= 45 45 4B CE             7511      dc.b    'EEK',tk_leek       * LEEK
 00003BEF                          7512  key_lefts
-00003BEF= 45 46 54 24 DF          7513      dc.b    'EFT$',TK_LEFTS     * LEFT$
+00003BEF= 45 46 54 24 DF          7513      dc.b    'EFT$',tk_lefts     * LEFT$
 00003BF4                          7514  key_len
-00003BF4= 45 4E D0                7515      dc.b    'EN',TK_LEN     * LEN
+00003BF4= 45 4E D0                7515      dc.b    'EN',tk_len     * LEN
 00003BF7                          7516  key_let
-00003BF7= 45 54 87                7517      dc.b    'ET',TK_LET     * LET
+00003BF7= 45 54 87                7517      dc.b    'ET',tk_let     * LET
 00003BFA                          7518  key_list
-00003BFA= 49 53 54 A0             7519      dc.b    'IST',TK_LIST       * LIST
+00003BFA= 49 53 54 A0             7519      dc.b    'IST',tk_list       * LIST
 00003BFE                          7520  key_load
-00003BFE= 4F 41 44 95             7521      dc.b    'OAD',TK_LOAD       * LOAD
+00003BFE= 4F 41 44 95             7521      dc.b    'OAD',tk_load       * LOAD
 00003C02                          7522  key_log
-00003C02= 4F 47 C6                7523      dc.b    'OG',TK_LOG     * LOG
+00003C02= 4F 47 C6                7523      dc.b    'OG',tk_log     * LOG
 00003C05                          7524  key_loke
-00003C05= 4F 4B 45 9A             7525      dc.b    'OKE',TK_LOKE       * LOKE
+00003C05= 4F 4B 45 9A             7525      dc.b    'OKE',tk_loke       * LOKE
 00003C09                          7526  key_loop
-00003C09= 4F 4F 50 9D             7527      dc.b    'OOP',TK_LOOP       * LOOP
+00003C09= 4F 4F 50 9D             7527      dc.b    'OOP',tk_loop       * LOOP
 00003C0D= 00                      7528      dc.b    $00
 00003C0E                          7529  tab_ascm
 00003C0E                          7530  key_max
-00003C0E= 41 58 DA                7531      dc.b    'AX',TK_MAX     * MAX
+00003C0E= 41 58 DA                7531      dc.b    'AX',tk_max     * MAX
 00003C11                          7532  key_mids
-00003C11= 49 44 24 E1             7533      dc.b    'ID$',TK_MIDS       * MID$
+00003C11= 49 44 24 E1             7533      dc.b    'ID$',tk_mids       * MID$
 00003C15                          7534  key_min
-00003C15= 49 4E DB                7535      dc.b    'IN',TK_MIN     * MIN
+00003C15= 49 4E DB                7535      dc.b    'IN',tk_min     * MIN
 00003C18= 00                      7536      dc.b    $00
 00003C19                          7537  tab_ascn
 00003C19                          7538  key_new
-00003C19= 45 57 A2                7539      dc.b    'EW',TK_NEW     * NEW
+00003C19= 45 57 A2                7539      dc.b    'EW',tk_new     * NEW
 00003C1C                          7540  key_next
-00003C1C= 45 58 54 82             7541      dc.b    'EXT',TK_NEXT       * NEXT
+00003C1C= 45 58 54 82             7541      dc.b    'EXT',tk_next       * NEXT
 00003C20                          7542  key_not
-00003C20= 4F 54 AD                7543      dc.b    'OT',TK_NOT     * NUT
+00003C20= 4F 54 AD                7543      dc.b    'OT',tk_not     * NUT
 00003C23                          7544  key_null
-00003C23= 55 4C 4C 92             7545      dc.b    'ULL',TK_NULL       * NULL
+00003C23= 55 4C 4C 92             7545      dc.b    'ULL',tk_null       * NULL
 00003C27= 00                      7546      dc.b    $00
 00003C28                          7547  tab_asco
 00003C28                          7548  key_on
-00003C28= 4E 91                   7549      dc.b    'N',TK_ON       * ON
+00003C28= 4E 91                   7549      dc.b    'N',tk_on       * ON
 00003C2A                          7550  key_or
-00003C2A= 52 B8                   7551      dc.b    'R',TK_OR       * OR
+00003C2A= 52 B8                   7551      dc.b    'R',tk_or       * OR
 00003C2C= 00                      7552      dc.b    $00
 00003C2D                          7553  tab_ascp
 00003C2D                          7554  key_peek
-00003C2D= 45 45 4B CC             7555      dc.b    'EEK',TK_PEEK       * PEEK
+00003C2D= 45 45 4B CC             7555      dc.b    'EEK',tk_peek       * PEEK
 00003C31                          7556  key_pi
-00003C31= 49 DC                   7557      dc.b    'I',TK_PI       * PI
+00003C31= 49 DC                   7557      dc.b    'I',tk_pi       * PI
 00003C33                          7558  key_poke
-00003C33= 4F 4B 45 98             7559      dc.b    'OKE',TK_POKE       * POKE
+00003C33= 4F 4B 45 98             7559      dc.b    'OKE',tk_poke       * POKE
 00003C37                          7560  key_pos
-00003C37= 4F 53 C3                7561      dc.b    'OS',TK_POS     * POS
+00003C37= 4F 53 C3                7561      dc.b    'OS',tk_pos     * POS
 00003C3A                          7562  key_print
-00003C3A= 52 49 4E 54 9E          7563      dc.b    'RINT',TK_PRINT     * PRINT
+00003C3A= 52 49 4E 54 9E          7563      dc.b    'RINT',tk_print     * PRINT
 00003C3F= 00                      7564      dc.b    $00
 00003C40                          7565  tab_ascr
 00003C40                          7566  key_read
-00003C40= 45 41 44 86             7567      dc.b    'EAD',TK_READ       * READ
+00003C40= 45 41 44 86             7567      dc.b    'EAD',tk_read       * READ
 00003C44                          7568  key_rem
-00003C44= 45 4D 8F                7569      dc.b    'EM',TK_REM     * REM
+00003C44= 45 4D 8F                7569      dc.b    'EM',tk_rem     * REM
 00003C47                          7570  key_restore
-00003C47= 45 53 54 4F 52 45 8C    7571      dc.b    'ESTORE',TK_RESTORE * RESTORE
+00003C47= 45 53 54 4F 52 45 8C    7571      dc.b    'ESTORE',tk_restore * RESTORE
 00003C4E                          7572  key_return
-00003C4E= 45 54 55 52 4E 8E       7573      dc.b    'ETURN',TK_RETURN   * RETURN
+00003C4E= 45 54 55 52 4E 8E       7573      dc.b    'ETURN',tk_return   * RETURN
 00003C54                          7574  key_rights
-00003C54= 49 47 48 54 24 E0       7575      dc.b    'IGHT$',TK_RIGHTS   * RIGHT$
+00003C54= 49 47 48 54 24 E0       7575      dc.b    'IGHT$',tk_rights   * RIGHT$
 00003C5A                          7576  key_rnd
-00003C5A= 4E 44 C5                7577      dc.b    'ND',TK_RND     * RND
+00003C5A= 4E 44 C5                7577      dc.b    'ND',tk_rnd     * RND
 00003C5D                          7578  key_run
-00003C5D= 55 4E 8A                7579      dc.b    'UN',TK_RUN     * RUN
+00003C5D= 55 4E 8A                7579      dc.b    'UN',tk_run     * RUN
 00003C60= 00                      7580      dc.b    $00
 00003C61                          7581  tab_ascs
 00003C61                          7582  key_sadd
-00003C61= 41 44 44 CF             7583      dc.b    'ADD',TK_SADD       * SADD
+00003C61= 41 44 44 CF             7583      dc.b    'ADD',tk_sadd       * SADD
 00003C65                          7584  key_save
-00003C65= 41 56 45 96             7585      dc.b    'AVE',TK_SAVE       * SAVE
+00003C65= 41 56 45 96             7585      dc.b    'AVE',tk_save       * SAVE
 00003C69                          7586  key_sgn
-00003C69= 47 4E BE                7587      dc.b    'GN',TK_SGN     * SGN
+00003C69= 47 4E BE                7587      dc.b    'GN',tk_sgn     * SGN
 00003C6C                          7588  key_sin
-00003C6C= 49 4E C9                7589      dc.b    'IN',TK_SIN     * SIN
+00003C6C= 49 4E C9                7589      dc.b    'IN',tk_sin     * SIN
 00003C6F                          7590  key_spc
-00003C6F= 50 43 28 AB             7591      dc.b    'PC(',TK_SPC        * SPC(
+00003C6F= 50 43 28 AB             7591      dc.b    'PC(',tk_spc        * SPC(
 00003C73                          7592  key_sqr
-00003C73= 51 52 C4                7593      dc.b    'QR',TK_SQR     * SQR
+00003C73= 51 52 C4                7593      dc.b    'QR',tk_sqr     * SQR
 00003C76                          7594  key_step
-00003C76= 54 45 50 AE             7595      dc.b    'TEP',TK_STEP       * STEP
+00003C76= 54 45 50 AE             7595      dc.b    'TEP',tk_step       * STEP
 00003C7A                          7596  key_stop
-00003C7A= 54 4F 50 90             7597      dc.b    'TOP',TK_STOP       * STOP
+00003C7A= 54 4F 50 90             7597      dc.b    'TOP',tk_stop       * STOP
 00003C7E                          7598  key_strs
-00003C7E= 54 52 24 D1             7599      dc.b    'TR$',TK_STRS       * STR$
+00003C7E= 54 52 24 D1             7599      dc.b    'TR$',tk_strs       * STR$
 00003C82                          7600  key_swap
-00003C82= 57 41 50 A5             7601      dc.b    'WAP',TK_SWAP       * SWAP
+00003C82= 57 41 50 A5             7601      dc.b    'WAP',tk_swap       * SWAP
 00003C86= 00                      7602      dc.b    $00
 00003C87                          7603  tab_asct
 00003C87                          7604  key_tab
-00003C87= 41 42 28 A8             7605      dc.b    'AB(',TK_TAB        * TAB(
+00003C87= 41 42 28 A8             7605      dc.b    'AB(',tk_tab        * TAB(
 00003C8B                          7606  key_tan
-00003C8B= 41 4E CA                7607      dc.b    'AN',TK_TAN     * TAN
+00003C8B= 41 4E CA                7607      dc.b    'AN',tk_tan     * TAN
 00003C8E                          7608  key_then
-00003C8E= 48 45 4E AC             7609      dc.b    'HEN',TK_THEN       * THEN
+00003C8E= 48 45 4E AC             7609      dc.b    'HEN',tk_then       * THEN
 00003C92                          7610  key_to
-00003C92= 4F A9                   7611      dc.b    'O',TK_TO       * TO
+00003C92= 4F A9                   7611      dc.b    'O',tk_to       * TO
 00003C94                          7612  key_twopi
-00003C94= 57 4F 50 49 DD          7613      dc.b    'WOPI',TK_TWOPI     * TWOPI
+00003C94= 57 4F 50 49 DD          7613      dc.b    'WOPI',tk_twopi     * TWOPI
 00003C99= 00                      7614      dc.b    $00
 00003C9A                          7615  tab_ascu
 00003C9A                          7616  key_ucases
-00003C9A= 43 41 53 45 24 D4       7617      dc.b    'CASE$',TK_UCASES   * UCASE$
+00003C9A= 43 41 53 45 24 D4       7617      dc.b    'CASE$',tk_ucases   * UCASE$
 00003CA0                          7618  key_until
-00003CA0= 4E 54 49 4C AF          7619      dc.b    'NTIL',TK_UNTIL     * UNTIL
+00003CA0= 4E 54 49 4C AF          7619      dc.b    'NTIL',tk_until     * UNTIL
 00003CA5                          7620  key_usr
-00003CA5= 53 52 C1                7621      dc.b    'SR',TK_USR     * USR
+00003CA5= 53 52 C1                7621      dc.b    'SR',tk_usr     * USR
 00003CA8= 00                      7622      dc.b    $00
 00003CA9                          7623  tab_ascv
 00003CA9                          7624  key_val
-00003CA9= 41 4C D2                7625      dc.b    'AL',TK_VAL     * VAL
+00003CA9= 41 4C D2                7625      dc.b    'AL',tk_val     * VAL
 00003CAC                          7626  key_vptr
-00003CAC= 41 52 50 54 52 DE       7627      dc.b    'ARPTR',TK_VPTR     * VARPTR
+00003CAC= 41 52 50 54 52 DE       7627      dc.b    'ARPTR',tk_vptr     * VARPTR
 00003CB2= 00                      7628      dc.b    $00
 00003CB3                          7629  tab_ascw
 00003CB3                          7630  key_wait
-00003CB3= 41 49 54 94             7631      dc.b    'AIT',TK_WAIT       * WAIT
+00003CB3= 41 49 54 94             7631      dc.b    'AIT',tk_wait       * WAIT
 00003CB7                          7632  key_while
-00003CB7= 48 49 4C 45 B0          7633      dc.b    'HILE',TK_WHILE     * WHILE
+00003CB7= 48 49 4C 45 B0          7633      dc.b    'HILE',tk_while     * WHILE
 00003CBC                          7634  key_width
-00003CBC= 49 44 54 48 A3          7635      dc.b    'IDTH',TK_WIDTH     * WIDTH
+00003CBC= 49 44 54 48 A3          7635      dc.b    'IDTH',tk_width     * WIDTH
 00003CC1= 00                      7636      dc.b    $00
 00003CC2                          7637  tab_powr
 00003CC2                          7638  key_power
@@ -7651,18 +7651,18 @@ Created On: 22/08/2022 10:03:50 PM
 00003CD3                          7647  lab_lmsg
 00003CD3= 20 69 6E 20 6C 69 ...   7648      dc.b    ' in line ',$00
 00003CDD                          7649  lab_imsg
-00003CDD= 45 78 74 72 61 20 ...   7650      dc.b    'Extra ignored',$0D,$0A,$00
+00003CDD= 45 78 74 72 61 20 ...   7650      dc.b    'Extra ignored',$0d,$0a,$00
 00003CED                          7651  lab_redo
-00003CED= 52 65 64 6F 20 66 ...   7652      dc.b    'Redo from start',$0D,$0A,$00
+00003CED= 52 65 64 6F 20 66 ...   7652      dc.b    'Redo from start',$0d,$0a,$00
 00003CFF                          7653  lab_rmsg
-00003CFF= 0D 0A 52 65 61 64 ...   7654      dc.b    $0d,$0a,'Ready',$0D,$0A,$00
+00003CFF= 0D 0A 52 65 61 64 ...   7654      dc.b    $0d,$0a,'Ready',$0d,$0a,$00
 00003D09                          7655  
 00003D09                          7656  lab_mszm
 00003D09= 0D 0A 4D 65 6D 6F ...   7657      dc.b    $0d,$0a,'Memory size ',$00
 00003D18                          7658  
 00003D18                          7659  lab_smsg
-00003D18= 20 42 79 74 65 73 ...   7660      dc.b    ' Bytes free',$0D,$0A,$0A
-00003D26= 45 6E 68 61 6E 63 ...   7661      dc.b    'Enhanced 68k BASIC Version 1.10',$0D,$0A,$00
+00003D18= 20 42 79 74 65 73 ...   7660      dc.b    ' Bytes free',$0d,$0a,$0a
+00003D26= 45 6E 68 61 6E 63 ...   7661      dc.b    'Enhanced 68k BASIC Version 1.10',$0d,$0a,$00
 00003D48                          7662  
 00003D48                          7663  *************************************************************************************
 00003D48                          7664  * EhBASIC keywords quick reference list                                             *

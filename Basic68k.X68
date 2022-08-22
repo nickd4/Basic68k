@@ -6889,7 +6889,7 @@ tab_atnc
 	dc.l	$00000000		* atn(2^-32)
 
 * constants are normalised to n integer bits and are tanh(2^-i)
-n     equ   2
+n	equ	2
 tab_hthet
 	dc.l	$8c9f53d0>>n		* atnh(2^-1)   .549306144
 	dc.l	$4162bbe8>>n		* atnh(2^-2)   .255412812
@@ -6924,7 +6924,7 @@ tab_hthet
 	dc.l	$00000002>>n		* atnh(2^-31)
 	dc.l	$00000001>>n		* atnh(2^-32)
 
-kfctseed    equ   $9a8f4441>>n		* $26A3D110
+kfctseed equ	$9a8f4441>>n		* $26A3D110
 
 * command vector table
 
@@ -7237,7 +7237,7 @@ lab_keyt
 	dc.w	key_plus-tab_star	* +
 	dc.b	'-',-1
 	dc.w	key_minus-tab_star	* -
-      dc.b  '*',-1
+	dc.b	'*',-1
 	dc.w	key_mult-tab_star	* *
 	dc.b	'/',-1
 	dc.w	key_div-tab_star	* /
@@ -7404,7 +7404,7 @@ key_div
 	dc.b	tk_div,$00		* /
 tab_less
 key_lshift
-	dc.b	'<',TK_LSHIFT		* <<
+	dc.b	'<',tk_lshift		* <<
 key_lt
 	dc.b	tk_lt			* <
 	dc.b	$00
@@ -7413,7 +7413,7 @@ key_equal
 	dc.b	tk_equal,$00		* =
 tab_more
 key_rshift
-	dc.b	'>',TK_RSHIFT		* >>
+	dc.b	'>',tk_rshift		* >>
 key_gt
 	dc.b	tk_gt			* >
 	dc.b	$00
@@ -7421,218 +7421,218 @@ tab_qest
 	dc.b	tk_print,$00		* ?
 tab_asca
 key_abs
-	dc.b	'BS',TK_ABS		* ABS
+	dc.b	'BS',tk_abs		* ABS
 key_and
-	dc.b	'ND',TK_AND		* AND
+	dc.b	'ND',tk_and		* AND
 key_asc
-	dc.b	'SC',TK_ASC		* ASC
+	dc.b	'SC',tk_asc		* ASC
 key_atn
-	dc.b	'TN',TK_ATN		* ATN
+	dc.b	'TN',tk_atn		* ATN
 	dc.b	$00
 tab_ascb
 key_bins
-	dc.b	'IN$',TK_BINS		* BIN$IN$
+	dc.b	'IN$',tk_bins		* BIN$IN$
 key_bitclr
-	dc.b	'ITCLR',TK_BITCLR	* BITCLR
+	dc.b	'ITCLR',tk_bitclr	* BITCLR
 key_bitset
-	dc.b	'ITSET',TK_BITSET	* BITSET
+	dc.b	'ITSET',tk_bitset	* BITSET
 key_bittst
-	dc.b	'ITTST',TK_BITTST	* BITTST
+	dc.b	'ITTST',tk_bittst	* BITTST
 	dc.b	$00
 tab_ascc
 key_call
-	dc.b	'ALL',TK_CALL		* CALL
+	dc.b	'ALL',tk_call		* CALL
 key_chrs
-	dc.b	'HR$',TK_CHRS		* CHR$
+	dc.b	'HR$',tk_chrs		* CHR$
 key_clear
-	dc.b	'LEAR',TK_CLEAR		* CLEAR
+	dc.b	'LEAR',tk_clear		* CLEAR
 key_cont
-	dc.b	'ONT',TK_CONT		* CONT
+	dc.b	'ONT',tk_cont		* CONT
 key_cos
-	dc.b	'OS',TK_COS		* COS
+	dc.b	'OS',tk_cos		* COS
 	dc.b	$00
 tab_ascd
 key_data
-	dc.b	'ATA',TK_DATA		* DATA
+	dc.b	'ATA',tk_data		* DATA
 key_dec
-	dc.b	'EC',TK_DEC		* DEC
+	dc.b	'EC',tk_dec		* DEC
 key_deek
-	dc.b	'EEK',TK_DEEK		* DEEK
+	dc.b	'EEK',tk_deek		* DEEK
 key_def
-	dc.b	'EF',TK_DEF		* DEF
+	dc.b	'EF',tk_def		* DEF
 key_dim
-	dc.b	'IM',TK_DIM		* DIM
+	dc.b	'IM',tk_dim		* DIM
 key_doke
-	dc.b	'OKE',TK_DOKE		* DOKE
+	dc.b	'OKE',tk_doke		* DOKE
 key_do
-	dc.b	'O',TK_DO		* DO
+	dc.b	'O',tk_do		* DO
 	dc.b	$00
 tab_asce
 key_end
-	dc.b	'ND',TK_END		* END
+	dc.b	'ND',tk_end		* END
 key_eor
-	dc.b	'OR',TK_EOR		* EOR
+	dc.b	'OR',tk_eor		* EOR
 key_exp
-	dc.b	'XP',TK_EXP		* EXP
+	dc.b	'XP',tk_exp		* EXP
 	dc.b	$00
 tab_ascf
 key_for
-	dc.b	'OR',TK_FOR		* FOR
+	dc.b	'OR',tk_for		* FOR
 key_fn
-	dc.b	'N',TK_FN		* FN
+	dc.b	'N',tk_fn		* FN
 key_fre
-	dc.b	'RE',TK_FRE		* FRE
+	dc.b	'RE',tk_fre		* FRE
 	dc.b	$00
 tab_ascg
 key_get
-	dc.b	'ET',TK_GET		* GET
+	dc.b	'ET',tk_get		* GET
 key_goto
-	dc.b	'OTO',TK_GOTO		* GOTO
+	dc.b	'OTO',tk_goto		* GOTO
 key_gosub
-	dc.b	'OSUB',TK_GOSUB		* GOSUB
+	dc.b	'OSUB',tk_gosub		* GOSUB
 	dc.b	$00
 tab_asch
 key_hexs
-	dc.b	'EX$',TK_HEXS,$00	* HEX$
+	dc.b	'EX$',tk_hexs,$00	* HEX$
 tab_asci
 key_if
-	dc.b	'F',TK_IF		* IF
+	dc.b	'F',tk_if		* IF
 key_inc
-	dc.b	'NC',TK_INC		* INC
+	dc.b	'NC',tk_inc		* INC
 key_input
-	dc.b	'NPUT',TK_INPUT		* INPUT
+	dc.b	'NPUT',tk_input		* INPUT
 key_int
-	dc.b	'NT',TK_INT		* INT
+	dc.b	'NT',tk_int		* INT
 	dc.b	$00
 tab_ascl
 key_lcases
-	dc.b	'CASE$',TK_LCASES	* LCASE$
+	dc.b	'CASE$',tk_lcases	* LCASE$
 key_leek
-	dc.b	'EEK',TK_LEEK		* LEEK
+	dc.b	'EEK',tk_leek		* LEEK
 key_lefts
-	dc.b	'EFT$',TK_LEFTS		* LEFT$
+	dc.b	'EFT$',tk_lefts		* LEFT$
 key_len
-	dc.b	'EN',TK_LEN		* LEN
+	dc.b	'EN',tk_len		* LEN
 key_let
-	dc.b	'ET',TK_LET		* LET
+	dc.b	'ET',tk_let		* LET
 key_list
-	dc.b	'IST',TK_LIST		* LIST
+	dc.b	'IST',tk_list		* LIST
 key_load
-	dc.b	'OAD',TK_LOAD		* LOAD
+	dc.b	'OAD',tk_load		* LOAD
 key_log
-	dc.b	'OG',TK_LOG		* LOG
+	dc.b	'OG',tk_log		* LOG
 key_loke
-	dc.b	'OKE',TK_LOKE		* LOKE
+	dc.b	'OKE',tk_loke		* LOKE
 key_loop
-	dc.b	'OOP',TK_LOOP		* LOOP
+	dc.b	'OOP',tk_loop		* LOOP
 	dc.b	$00
 tab_ascm
 key_max
-	dc.b	'AX',TK_MAX		* MAX
+	dc.b	'AX',tk_max		* MAX
 key_mids
-	dc.b	'ID$',TK_MIDS		* MID$
+	dc.b	'ID$',tk_mids		* MID$
 key_min
-	dc.b	'IN',TK_MIN		* MIN
+	dc.b	'IN',tk_min		* MIN
 	dc.b	$00
 tab_ascn
 key_new
-	dc.b	'EW',TK_NEW		* NEW
+	dc.b	'EW',tk_new		* NEW
 key_next
-	dc.b	'EXT',TK_NEXT		* NEXT
+	dc.b	'EXT',tk_next		* NEXT
 key_not
-	dc.b	'OT',TK_NOT		* NUT
+	dc.b	'OT',tk_not		* NUT
 key_null
-	dc.b	'ULL',TK_NULL		* NULL
+	dc.b	'ULL',tk_null		* NULL
 	dc.b	$00
 tab_asco
 key_on
-	dc.b	'N',TK_ON		* ON
+	dc.b	'N',tk_on		* ON
 key_or
-	dc.b	'R',TK_OR		* OR
+	dc.b	'R',tk_or		* OR
 	dc.b	$00
 tab_ascp
 key_peek
-	dc.b	'EEK',TK_PEEK		* PEEK
+	dc.b	'EEK',tk_peek		* PEEK
 key_pi
-	dc.b	'I',TK_PI		* PI
+	dc.b	'I',tk_pi		* PI
 key_poke
-	dc.b	'OKE',TK_POKE		* POKE
+	dc.b	'OKE',tk_poke		* POKE
 key_pos
-	dc.b	'OS',TK_POS		* POS
+	dc.b	'OS',tk_pos		* POS
 key_print
-	dc.b	'RINT',TK_PRINT		* PRINT
+	dc.b	'RINT',tk_print		* PRINT
 	dc.b	$00
 tab_ascr
 key_read
-	dc.b	'EAD',TK_READ		* READ
+	dc.b	'EAD',tk_read		* READ
 key_rem
-	dc.b	'EM',TK_REM		* REM
+	dc.b	'EM',tk_rem		* REM
 key_restore
-	dc.b	'ESTORE',TK_RESTORE	* RESTORE
+	dc.b	'ESTORE',tk_restore	* RESTORE
 key_return
-	dc.b	'ETURN',TK_RETURN	* RETURN
+	dc.b	'ETURN',tk_return	* RETURN
 key_rights
-	dc.b	'IGHT$',TK_RIGHTS	* RIGHT$
+	dc.b	'IGHT$',tk_rights	* RIGHT$
 key_rnd
-	dc.b	'ND',TK_RND		* RND
+	dc.b	'ND',tk_rnd		* RND
 key_run
-	dc.b	'UN',TK_RUN		* RUN
+	dc.b	'UN',tk_run		* RUN
 	dc.b	$00
 tab_ascs
 key_sadd
-	dc.b	'ADD',TK_SADD		* SADD
+	dc.b	'ADD',tk_sadd		* SADD
 key_save
-	dc.b	'AVE',TK_SAVE		* SAVE
+	dc.b	'AVE',tk_save		* SAVE
 key_sgn
-	dc.b	'GN',TK_SGN		* SGN
+	dc.b	'GN',tk_sgn		* SGN
 key_sin
-	dc.b	'IN',TK_SIN		* SIN
+	dc.b	'IN',tk_sin		* SIN
 key_spc
-	dc.b	'PC(',TK_SPC		* SPC(
+	dc.b	'PC(',tk_spc		* SPC(
 key_sqr
-	dc.b	'QR',TK_SQR		* SQR
+	dc.b	'QR',tk_sqr		* SQR
 key_step
-	dc.b	'TEP',TK_STEP		* STEP
+	dc.b	'TEP',tk_step		* STEP
 key_stop
-	dc.b	'TOP',TK_STOP		* STOP
+	dc.b	'TOP',tk_stop		* STOP
 key_strs
-	dc.b	'TR$',TK_STRS		* STR$
+	dc.b	'TR$',tk_strs		* STR$
 key_swap
-	dc.b	'WAP',TK_SWAP		* SWAP
+	dc.b	'WAP',tk_swap		* SWAP
 	dc.b	$00
 tab_asct
 key_tab
-	dc.b	'AB(',TK_TAB		* TAB(
+	dc.b	'AB(',tk_tab		* TAB(
 key_tan
-	dc.b	'AN',TK_TAN		* TAN
+	dc.b	'AN',tk_tan		* TAN
 key_then
-	dc.b	'HEN',TK_THEN		* THEN
+	dc.b	'HEN',tk_then		* THEN
 key_to
-	dc.b	'O',TK_TO		* TO
+	dc.b	'O',tk_to		* TO
 key_twopi
-	dc.b	'WOPI',TK_TWOPI		* TWOPI
+	dc.b	'WOPI',tk_twopi		* TWOPI
 	dc.b	$00
 tab_ascu
 key_ucases
-	dc.b	'CASE$',TK_UCASES	* UCASE$
+	dc.b	'CASE$',tk_ucases	* UCASE$
 key_until
-	dc.b	'NTIL',TK_UNTIL		* UNTIL
+	dc.b	'NTIL',tk_until		* UNTIL
 key_usr
-	dc.b	'SR',TK_USR		* USR
+	dc.b	'SR',tk_usr		* USR
 	dc.b	$00
 tab_ascv
 key_val
-	dc.b	'AL',TK_VAL		* VAL
+	dc.b	'AL',tk_val		* VAL
 key_vptr
-	dc.b	'ARPTR',TK_VPTR		* VARPTR
+	dc.b	'ARPTR',tk_vptr		* VARPTR
 	dc.b	$00
 tab_ascw
 key_wait
-	dc.b	'AIT',TK_WAIT		* WAIT
+	dc.b	'AIT',tk_wait		* WAIT
 key_while
-	dc.b	'HILE',TK_WHILE		* WHILE
+	dc.b	'HILE',tk_while		* WHILE
 key_width
-	dc.b	'IDTH',TK_WIDTH		* WIDTH
+	dc.b	'IDTH',tk_width		* WIDTH
 	dc.b	$00
 tab_powr
 key_power
@@ -7647,18 +7647,18 @@ lab_emsg
 lab_lmsg
 	dc.b	' in line ',$00
 lab_imsg
-	dc.b	'Extra ignored',$0D,$0A,$00
+	dc.b	'Extra ignored',$0d,$0a,$00
 lab_redo
-	dc.b	'Redo from start',$0D,$0A,$00
+	dc.b	'Redo from start',$0d,$0a,$00
 lab_rmsg
-	dc.b	$0d,$0a,'Ready',$0D,$0A,$00
+	dc.b	$0d,$0a,'Ready',$0d,$0a,$00
 
 lab_mszm
 	dc.b	$0d,$0a,'Memory size ',$00
 
 lab_smsg
-	dc.b	' Bytes free',$0D,$0A,$0A
-	dc.b	'Enhanced 68k BASIC Version 1.10',$0D,$0A,$00
+	dc.b	' Bytes free',$0d,$0a,$0a
+	dc.b	'Enhanced 68k BASIC Version 1.10',$0d,$0a,$00
 
 *************************************************************************************
 * EhBASIC keywords quick reference list                                             *
