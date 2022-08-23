@@ -126,7 +126,7 @@ load_exit:
 ; is ASCII file so just change the input vector
 
 load_ascii:
-	lea	(load_in,pc),a1		; get byte from file vector
+	lea	load_in(pc),a1		; get byte from file vector
 	move.l	a1,v_inptv		; set input vector
 	movea.l	(sp)+,a0		; get string end back
 	move.b	(sp)+,(a0)		; put byte back
@@ -154,7 +154,7 @@ load_eof:
 	moveq	#50,d0			; close all files
 	trap	#15
 
-	lea	(vec_in,pc),a1		; get byte from input device vector
+	lea	vec_in(pc),a1		; get byte from input device vector
 	move.l	a1,v_inptv		; set input vector
 	moveq	#0,d0			; clear byte
 	movem.l	(sp)+,d1-d2/a1		; restore d1, d2 & a1
@@ -196,7 +196,7 @@ vec_sv:
 	move.l	d1,file_id		; save file ID
 
 	move.l	v_outpv,-(sp)		; save the output vector
-	lea	(save_out,pc),a1	; send byte to file vector
+	lea	save_out(pc),a1	; send byte to file vector
 	move.l	a1,v_outpv		; change output vector
 
 	bsr	lab_igby		; increment & scan memory
@@ -295,32 +295,32 @@ lab_cold:
 	movea.l	sp,a0			; point to start of vector table
 
 	move.w	d0,(a0)+		; LAB_WARM
-	lea	(lab_cold,pc),a1	; initial warm start vector
+	lea	lab_cold(pc),a1	; initial warm start vector
 	move.l	a1,(a0)+		; set vector
 
 	move.w	d0,(a0)+		; Usrjmp
-	lea	(lab_fcer,pc),a1	; initial user function vector
+	lea	lab_fcer(pc),a1	; initial user function vector
 					; "Function call" error
 	move.l	a1,(a0)+		; set vector
 
 	move.w	d0,(a0)+		; V_INPT JMP opcode
-	lea	(vec_in,pc),a1		; get byte from input device vector
+	lea	vec_in(pc),a1		; get byte from input device vector
 	move.l	a1,(a0)+		; set vector
 
 	move.w	d0,(a0)+		; V_OUTP JMP opcode
-	lea	(vec_out,pc),a1		; send byte to output device vector
+	lea	vec_out(pc),a1		; send byte to output device vector
 	move.l	a1,(a0)+		; set vector
 
 	move.w	d0,(a0)+		; V_LOAD JMP opcode
-	lea	(vec_ld,pc),a1		; load BASIC program vector
+	lea	vec_ld(pc),a1		; load BASIC program vector
 	move.l	a1,(a0)+		; set vector
 
 	move.w	d0,(a0)+		; V_SAVE JMP opcode
-	lea	(vec_sv,pc),a1		; save BASIC program vector
+	lea	vec_sv(pc),a1		; save BASIC program vector
 	move.l	a1,(a0)+		; set vector
 
 	move.w	d0,(a0)+		; V_CTLC JMP opcode
-	lea	(vec_cc,pc),a1		; save CTRL-C check vector
+	lea	vec_cc(pc),a1		; save CTRL-C check vector
 	move.l	a1,(a0)+		; set vector
 
 	move.l	sp,(a0)			; save entry stack value
@@ -346,7 +346,7 @@ lab_gmem:
 	movea.l	#des_sk,a4		; set descriptor stack start
 
 	bsr	lab_crlf		; print CR/LF
-	lea	(lab_mszm,pc),a0	; point to memory size message
+	lea	lab_mszm(pc),a0	; point to memory size message
 	bsr	lab_18c3		; print null terminated string from memory
 	bsr	lab_inln		; print "? " and get BASIC input
 					; return a0 pointing to the buffer start
@@ -425,7 +425,7 @@ lab_2db6:
 	sub.l	smeml,d0		; subtract start of mem
 
 	bsr	lab_295e		; print d0 as unsigned integer (bytes free)
-	lea	(lab_smsg,pc),a0	; point to start message
+	lea	lab_smsg(pc),a0	; point to start message
 	bsr	lab_18c3		; print null terminated string from memory
 
 	movea.l	#lab_rsed,a0		; point to value
@@ -528,7 +528,7 @@ lab_uver:
 ; value returned by this is either numeric zero (exponent byte is $00) or null string
 ; (string pointer is $00). in fact a pointer to any $00 longword would have done.
 ;
-;	lea	(lab_1d96,pc),a0	* else return dummy null pointer
+;	lea	lab_1d96(pc),a0	* else return dummy null pointer
 ;	rts
 
 ; do loop without do error
@@ -644,10 +644,10 @@ lab_xerr:
 	move.w	d0,d7			; copy word
 	bsr	lab_1491		; flush stack & clear continue flag
 	bsr	lab_crlf		; print CR/LF
-	lea	(lab_baer,pc),a1	; start of error message pointer table
+	lea	lab_baer(pc),a1	; start of error message pointer table
 	movea.l	(a1,d7.w),a0		; get error message address
 	bsr	lab_18c3		; print null terminated string from memory
-	lea	(lab_emsg,pc),a0	; point to " Error" message
+	lea	lab_emsg(pc),a0	; point to " Error" message
 lab_1269:
 	bsr	lab_18c3		; print null terminated string from memory
 	move.l	clinel,d0		; get current line
@@ -659,7 +659,7 @@ lab_1269:
 ; BASIC warm start entry point, wait for Basic command
 
 lab_1274:
-	lea	(lab_rmsg,pc),a0	; point to "Ready" message
+	lea	lab_rmsg(pc),a0	; point to "Ready" message
 	bsr	lab_18c3		; go do print string
 
 ; wait for Basic command (no "Ready")
@@ -883,11 +883,11 @@ lab_13cc:
 
 	sub.b	#0x2a,d0			; normalise byte
 	add.w	d0,d0			; *2 makes word offset (high byte=$00)
-	lea	(tab_chrt,pc),a1	; get keyword offset table address
+	lea	tab_chrt(pc),a1	; get keyword offset table address
 	move.w	(a1,d0.w),d0		; get offset into keyword table
 	bmi.s	lab_141f		; branch if no keywords for character
 
-	lea	(tab_star,pc),a1	; get keyword table address
+	lea	tab_star(pc),a1	; get keyword table address
 	adda.w	d0,a1			; add keyword offset
 	moveq	#-1,d3			; clear index
 	move.w	d1,d4			; copy read index
@@ -1131,7 +1131,7 @@ lab_152e:
 	bne.s	lab_150c		; just go print character if open quote set
 
 					; else uncrunch BASIC token
-	lea	(lab_keyt,pc),a2	; get keyword table address
+	lea	lab_keyt(pc),a2	; get keyword table address
 	moveq	#0x7f,d1			; mask into d1
 	and.b	d0,d1			; copy and mask token
 	lsl.w	#2,d1			; *4
@@ -1143,7 +1143,7 @@ lab_152e:
 	bmi.s	lab_1519		; if -ve done so go get next byte
 
 	move.w	(a2),d0			; get offset to rest
-	lea	(tab_star,pc),a2	; get keyword table address
+	lea	tab_star(pc),a2	; get keyword table address
 	lea	(a2,d0.w),a2		; get address of rest
 lab_1540:
 	move.b	(a2)+,d0		; get byte from keyword table
@@ -1249,7 +1249,7 @@ lab_1602:
 	ext.w	d0			; byte to word (clear high byte)
 	add.w	d0,d0			; *2
 	add.w	d0,d0			; *4 (offset to longword vector)
-	lea	(lab_ctbl,pc),a0	; get vector table base address
+	lea	lab_ctbl(pc),a0	; get vector table base address
 	move.l	(a0,d0.w),-(sp)		; push vector
 	bra	lab_igby		; get following byte & execute vector
 
@@ -1292,7 +1292,7 @@ lab_164f:
 	move.b	breakf,d0		; get break flag
 	beq	lab_1274		; go do warm start if was program end
 
-	lea	(lab_bmsg,pc),a0	; point to "Break"
+	lea	lab_bmsg(pc),a0	; point to "Break"
 	bra	lab_1269		; print "Break" and do warm start
 
 ; perform RESTORE
@@ -1986,7 +1986,7 @@ lab_1904:
 
 					; mode was INPUT
 lab_1913:
-	lea	(lab_redo,pc),a0	; point to redo message
+	lea	lab_redo(pc),a0	; point to redo message
 	bsr	lab_18c3		; print null terminated string from memory
 	movea.l	cpntrl,a5		; save continue pointer as BASIC execute pointer
 	rts
@@ -2141,7 +2141,7 @@ lab_1a0e:
 	rts
 					; user typed too much
 lab_1a1b:
-	lea	(lab_imsg,pc),a0	; point to extra ignored message
+	lea	lab_imsg(pc),a0	; point to extra ignored message
 	bra	lab_18c3		; print null terminated string from memory & RTS
 
 ; perform NEXT
@@ -2315,7 +2315,7 @@ lab_1b0b:
 	move.b	d0,d1			; copy to index
 lab_1b13:
 	move.w	(sp)+,d0		; pull previous precedence
-	lea	(lab_oppt,pc),a0	; set pointer to operator table
+	lea	lab_oppt(pc),a0	; set pointer to operator table
 	cmp.w	(a0,d1.w),d0		; compare with this opperator precedence
 	bcc	lab_1b7d		; branch if previous precedence (d0) >=
 
@@ -2350,7 +2350,7 @@ lab_1b2a:
 	bra.s	lab_1b13		; branch always
 
 lab_1b3c:
-	lea	(lab_oppt,pc),a0	; point to function vector table
+	lea	lab_oppt(pc),a0	; point to function vector table
 	cmp.w	(a0,d1.w),d0		; compare with this opperator precedence
 	bcc.s	lab_1b86		; branch if d0 >=, pop FAC2 & return
 
@@ -2359,7 +2359,7 @@ lab_1b3c:
 ; get vector, set up operator then continue evaluation
 
 lab_1b43:
-	lea	(lab_oppt,pc),a0	; point to operator vector table
+	lea	lab_oppt(pc),a0	; point to operator vector table
 	move.l	2(a0,d1.w),-(sp)	; put vector on stack
 	bsr.s	lab_1b56		; function set up will return here, then the
 					; next RTS will call the function
@@ -2639,7 +2639,7 @@ lab_1c51:
 lab_1c54:
 	move.w	(sp)+,d0		; get offset back
 lab_1c56:
-	lea	(lab_ftbl,pc),a0	; pointer to functions vector table
+	lea	lab_ftbl(pc),a0	; pointer to functions vector table
 	movea.l	(a0,d0.w),a0		; get function vector
 	jsr	(a0)			; go do function vector
 	bra	lab_ctnm		; check if source is numeric & RTS, else do
@@ -4218,7 +4218,7 @@ lab_call:
 					; else do type mismatch
 	bsr	lab_2831		; convert FAC1 floating-to-fixed
 					; result in d0 and Itemp
-	pea	(lab_gbyt,pc)		; put return address on stack
+	pea	lab_gbyt(pc)		; put return address on stack
 	movea.l	d0,a0			; address into address register
 	jmp	(a0)			; do indirect jump to user routine
 
@@ -4264,7 +4264,7 @@ lab_subtract:
 ; add 0.5 to FAC1
 
 lab_244e:
-	lea	(lab_2a96,pc),a0	; set 0.5 pointer
+	lea	lab_2a96(pc),a0	; set 0.5 pointer
 
 ; perform addition, add (a0) to FAC1
 
@@ -5066,7 +5066,7 @@ lab_int:
 ; print " in line [LINE #]"
 
 lab_2953:
-	lea	(lab_lmsg,pc),a0	; point to " in line " message
+	lea	lab_lmsg(pc),a0	; point to " in line " message
 	bsr	lab_18c3		; print null terminated string
 
 					; Print Basic line #
@@ -5168,7 +5168,7 @@ lab_2989:
 
 	move.b	#0xfa,numexp		; set number exponent count (-6)
 lab_299c:
-	lea	(lab_294b,pc),a0	; set pointer to 999999.4375
+	lea	lab_294b(pc),a0	; set pointer to 999999.4375
 					; (max before scientific notation)
 	bsr	lab_27f8		; compare FAC1 with (a0)
 					; returns d0=+1 if FAC1 > FAC2
@@ -5180,7 +5180,7 @@ lab_299c:
 
 					; FAC1 < (a0)
 lab_29a7:
-	lea	(lab_2947,pc),a0	; set pointer to 99999.9375
+	lea	lab_2947(pc),a0	; set pointer to 99999.9375
 	bsr	lab_27f8		; compare FAC1 with (a0)
 					; returns d0=+1 if FAC1 > FAC2
 					; returns d0= 0 if FAC1 = FAC2
@@ -5248,7 +5248,7 @@ lab_29f7:
 	moveq	#0,d2			; clear index (point to 100,000)
 	moveq	#0x80-0x100,d0		; set output character
 lab_29fb:
-	lea	(lab_2a9a,pc),a0	; get base of table
+	lea	lab_2a9a(pc),a0	; get base of table
 	move.l	(a0,d2.w),d3		; get table value
 lab_29fd:
 	addq.b	#1,d0			; increment output character
@@ -5757,7 +5757,7 @@ lab_atn:
 	cmp.b	#0x81,d0			; compare exponent with 1
 	bcs.s	lab_atlo		; branch if FAC1<1
 
-	lea	(lab_259c,pc),a0	; set 1 pointer
+	lea	lab_259c(pc),a0	; set 1 pointer
 	bsr	lab_26ca		; convert a0 and do (a0)/FAC1
 	move.b	#0xff,cosout		; set needed result
 lab_atlo:
@@ -6377,7 +6377,7 @@ lab_2y04:
 	neg.l	d4			; negate decimal exponent to go right way
 	muls	#6,d4			; 6 bytes per entry
 	move.l	a0,-(sp)		; save register
-	lea	(lab_p_10,pc),a0	; point to table
+	lea	lab_p_10(pc),a0	; point to table
 	move.b	1(a0,d4.w),fac2_e	; copy exponent for multiply
 	move.l	2(a0,d4.w),fac2_m	; copy table mantissa
 	move.l	(sp)+,a0		; restore register
@@ -6924,7 +6924,7 @@ tab_hthet:
 	.long	0x00000002>>n		; atnh(2^-31)
 	.long	0x00000001>>n		; atnh(2^-32)
 
-kfctseed equ	0x9a8f4441>>n		; $26A3D110
+kfctseed =	0x9a8f4441>>n		; $26A3D110
 
 ; command vector table
 
@@ -6973,7 +6973,7 @@ lab_ctbl:
 ; action addresses for functions
 
 lab_ftxx:
-lab_ftbl: equ	lab_ftxx-(tk_sgn-0x80)*4	; offset for table start
+lab_ftbl =	lab_ftxx-(tk_sgn-0x80)*4	; offset for table start
 
 	.long	lab_sgn			; SGN()
 	.long	lab_int			; INT()
