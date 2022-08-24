@@ -4089,7 +4089,7 @@ lab_2368:
 lab_236f:
 	bsr	lab_1bfb		; scan for ")" , else do syntax error/warm start
 	move.l	(sp)+,d1		; pull return address
-	addq	#4,sp			; skip type check on exit
+	addq.w	#4,sp			; skip type check on exit
 	moveq	#0,d0			; clear longword
 	move.w	(sp)+,d0		; pull word parameter
 	move.l	(sp)+,a0		; pull string pointer
