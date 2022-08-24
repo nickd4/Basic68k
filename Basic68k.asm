@@ -83,7 +83,7 @@ vec_ld:
 	move.l	a0,-(sp)		; save address
 	moveq	#0,d0			; set for null
 	move.b	d0,(a0)			; null terminate string
-	move	#51,d0			; open existing file
+	move.w	#51,d0			; SHOULD BE MOVEQ !!! open existing file
 	trap	#15
 	tst.w	d0			; test load result
 	bne	load_exit		; if error clear up and exit
@@ -188,7 +188,7 @@ vec_sv:
 	move.l	a0,-(sp)		; save address
 	moveq	#0,d0			; set for null
 	move.b	d0,(a0)			; null terminate string
-	move	#52,d0			; open new file
+	move.w	#52,d0			; SHOULD BE MOVEQ !!! open new file
 	trap	#15
 	tst.w	d0			; test save result
 	bne	save_exit		; if error clear up and exit
@@ -215,7 +215,7 @@ save_bas:
 	move.l	a0,-(sp)		; save address
 	moveq	#0,d0			; set for null
 	move.b	d0,(a0)			; null terminate string
-	move	#52,d0			; open new file
+	move.w	#52,d0			; SHOULD BE MOVEQ !!! open new file
 	trap	#15
 	tst.w	d0			; test save result
 	bne	save_exit		; if error clear up and exit
