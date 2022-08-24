@@ -171,12 +171,16 @@ vec_sv:
 	bsr	lab_gbyt		; get next BASIC byte
 	beq.l	save_bas		; branch if no following
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#',,d0			; compare with ","
+	.enabl	alt
 	bne	lab_sner		; not "," so go do syntax error/warm start
 
 	bsr	lab_igby		; increment & scan memory
 	ori.b	#0x20,d0			; ensure lower case
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'a,d0			; compare with "a"
+	.enabl	alt
 	bne	lab_sner		; not "a" so go do syntax error/warm start
 
 	bsr	lab_evst		; evaluate string, returns d0 = length, a0 = pointer
@@ -379,10 +383,14 @@ lab_2d93:
 lab_2daa:
 	bsr	lab_2887		; get FAC1 from string
 	move.b	fac1_e,d1		; get FAC1 exponent
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x81,d1			; compare with min
+	.enabl	alt
 	bcs	lab_gmem		; if <1 go get again
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0xa0,d1			; compare maximum integer range exponent
+	.enabl	alt
 	bne.s	lab_2dab		; if not $A0 go test is less
 
 	tst.b	fac1_s			; test FAC1 sign
@@ -444,7 +452,9 @@ lab_11a1:
 	addq.w	#8,a2			; back past two levels of return address
 lab_11a6:
 	move.w	(a2),d0			; get token
+	.dsabl	alt ; defeat cmpi
 	cmp.w	#tk_for,d0		; is FOR token on stack?
+	.enabl	alt
 	bne.s	rts_002			; exit if not
 
 					; was FOR token
@@ -805,10 +815,14 @@ lab_1359:
 
 	beq.s	lab_1359		; loop if null byte
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x07,d0			; compare with [BELL]
+	.enabl	alt
 	beq.s	lab_1378		; branch if [BELL]
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x0d,d0			; compare with [CR]
+	.enabl	alt
 	beq	lab_1866		; do CR/LF exit if [CR]
 
 	tst.w	d1			; set flags on buffer index
@@ -816,15 +830,21 @@ lab_1359:
 
 					; next two lines ignore any non print character
 					; & [SPACE] if the input buffer is empty
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#' +1,d0		; compare with [SP]+1
+	.enabl	alt
 	bcs.s	lab_1359		; if < ignore character
 
 lab_1374:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x08,d0			; compare with [BACKSPACE] (delete last character)
+	.enabl	alt
 	beq.s	lab_134b		; go delete last character
 
 lab_1378:
+	.dsabl	alt ; defeat cmpi
 	cmp.w	#(ibuffe-ibuffs-1),d1	; compare character count with max-1
+	.enabl	alt
 	bcc.s	lab_138e		; skip store & do [BELL] if buffer full
 
 	move.b	d0,(a0,d1.w)		; else store in buffer
@@ -859,20 +879,30 @@ lab_13ac:
 	move.b	(a5,d1.w),d0		; get byte from input buffer
 	beq.s	lab_13ec		; if null save byte then continue crunching
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'_,d0			; compare with "_"
+	.enabl	alt
 	bcc.s	lab_13ec		; if >= "_" save byte then continue crunching
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'<,d0			; compare with "<"
+	.enabl	alt
 	bcc.s	lab_13cc		; if >= "<" go crunch
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'0,d0			; compare with "0"
+	.enabl	alt
 	bcc.s	lab_13ec		; if >= "0" save byte then continue crunching
 
 	move.b	d0,asrch		; save buffer byte as search character
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x22,d0			; is it quote character?
+	.enabl	alt
 	beq.l	lab_1410		; branch if so (copy quoted string)
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'*,d0			; compare with "*"
+	.enabl	alt
 	bcs.s	lab_13ec		; if <= "*" save byte then continue crunching
 
 					; crunch rest
@@ -917,7 +947,9 @@ lab_13ec:
 	beq.s	lab_13ff		; branch if it was ":" (is now $00)
 
 					; d0 now holds token-$3A
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#(tk_data-0x3a),d0	; compare with DATA token - $3A
+	.enabl	alt
 	bne.s	lab_1401		; branch if not DATA
 
 					; token was : or DATA
@@ -1060,7 +1092,9 @@ lab_list:
 	bls.s	lab_14bd		; branch if next character numeric (LIST n...)
 					; or if next character [NULL] (LIST)
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_minus,d0		; compare with token for -
+	.enabl	alt
 	bne.s	rts_005			; exit if not - (LIST -m)
 
 					; LIST [[n][-m]]
@@ -1073,7 +1107,9 @@ lab_14bd:
 	beq.s	lab_14d4		; branch if no more characters
 
 					; this bit checks the - is present
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_minus,d0		; compare with token for -
+	.enabl	alt
 	bne.s	rts_005			; return if not "-" (will be Syntax error)
 
 					; LIST [n]-m
@@ -1107,7 +1143,9 @@ lab_14e2:
 	moveq	#0x20,d0			; space is the next character
 lab_150c:
 	bsr	lab_prna		; go print the character
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x22,d0			; was it " character
+	.enabl	alt
 	bne.s	lab_1519		; branch if not
 
 					; we're either entering or leaving quotes
@@ -1187,7 +1225,9 @@ lab_1567:
 	move.w	#0x8100,fac1_e		; set default STEP size exponent and sign
 
 	bsr	lab_gbyt		; scan memory
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_step,d0		; compare with STEP token
+	.enabl	alt
 	bne.s	lab_15b3		; jump if not "STEP"
 
 					; was step so ....
@@ -1205,7 +1245,9 @@ lab_15b3:
 
 lab_15dc:				; have reached [EOL]+1
 	move.w	a5,d0			; copy BASIC execute pointer
+	.dsabl	alt ; defeat andi
 	and.w	#1,d0			; and make line start address even
+	.enabl	alt
 	add.w	d0,a5			; add to BASIC execute pointer
 	move.l	(a5)+,d0		; get next line pointer
 	beq	lab_1274		; if null go to immediate mode, no "BREAK" message
@@ -1228,7 +1270,9 @@ lab_15d1:
 	move.b	(a5)+,d0		; get this byte & increment pointer
 	beq.s	lab_15dc		; loop if [EOL]
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x3a,d0			; compare with ":"
+	.enabl	alt
 	beq.s	lab_15f6		; loop if was statement separator
 
 	bra	lab_sner		; else syntax error, then warm start
@@ -1242,7 +1286,9 @@ lab_1602:
 	eori.b	#0x80,d0			; normalise token
 	bmi	lab_let			; if not token, go do implied LET
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#(tk_tab-0x80),d0	; compare normalised token with TAB
+	.enabl	alt
 	bcc	lab_sner		; branch if d0>=TAB, syntax error/warm start
 					; only tokens before TAB can start a statement
 
@@ -1265,7 +1311,9 @@ lab_1629:
 ; if there was a key press it gets back here .....
 
 lab_1636:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x03,d0			; compare with CTRL-C
+	.enabl	alt
 	bne.s	rts_006			; return if wasn't CTRL-C
 
 ; perform STOP
@@ -1319,7 +1367,9 @@ lab_ress:
 	bne.s	lab_ress		; loop if not EOL
 
 	move.w	a0,d1			; copy pointer
+	.dsabl	alt ; defeat andi
 	and.w	#1,d1			; mask odd bit
+	.enabl	alt
 	add.w	d1,a0			; add pointer
 	bra.s	lab_gsch		; go find
 
@@ -1414,7 +1464,9 @@ lab_gots:
 	bne.s	lab_gots		; loop if not EOL
 
 	move.w	a0,d1			; past pad byte(s)
+	.dsabl	alt ; defeat andi
 	and.w	#1,d1			; mask odd bit
+	.enabl	alt
 	add.w	d1,a0			; add to pointer
 
 	move.l	clinel,d0		; get current line
@@ -1450,7 +1502,9 @@ lab_loop:
 					; exit with Zb=1 if FOR else exit with Zb=0
 					; return modified stack in a2
 
+	.dsabl	alt ; defeat cmpi
 	cmp.w	#tk_do,d0		; compare with DO token
+	.enabl	alt
 	bne	lab_lder		; branch if no matching DO
 
 	tst.b	d7			; test saved following token
@@ -1498,7 +1552,9 @@ lab_return:
 	bsr	lab_11a1		; search the stack for FOR or GOSUB activity
 					; exit with z=1 if FOR else exit with z=0
 					; return modified stack in a2
+	.dsabl	alt ; defeat cmpi
 	cmp.w	#tk_gosub,d0		; compare with GOSUB token
+	.enabl	alt
 	bne	lab_rger		; branch if no matching GOSUB
 
 	addq.w	#2,a2			; adjust for token
@@ -1529,7 +1585,9 @@ lab_snbs:
 	bra.s	lab_172d		; go do search
 
 lab_172c:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x3a,d0			; compare with ":"
+	.enabl	alt
 	beq.s	rts_007a		; exit if found
 
 	cmp.b	d1,d0			; compare current character with string quote
@@ -1558,7 +1616,9 @@ lab_1725:
 lab_if:
 	bsr	lab_evex		; evaluate expression
 	bsr	lab_gbyt		; scan memory
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_goto,d0		; compare with "GOTO" token
+	.enabl	alt
 	beq.s	lab_174b		; jump if was "GOTO"
 
 					; wasn't IF ... GOTO so must be IF ... THEN
@@ -1584,10 +1644,14 @@ lab_on:
 	move.b	d0,d2			; copy byte
 	bsr	lab_gbyt		; restore BASIC byte
 	move.w	d0,-(sp)		; push GOTO/GOSUB token
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_gosub,d0		; compare with GOSUB token
+	.enabl	alt
 	beq.s	lab_176c		; branch if GOSUB
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_goto,d0		; compare with GOTO token
+	.enabl	alt
 	bne	lab_sner		; if not GOTO do syntax error, then warm start
 
 ; next character was GOTO or GOSUB
@@ -1603,7 +1667,9 @@ lab_1773:
 	bsr	lab_igby		; increment & scan memory
 	bsr.s	lab_gfpn		; get fixed-point number into temp integer
 					; (skip this n)
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x2c,d0			; compare next character with ","
+	.enabl	alt
 	beq.s	lab_176c		; loop if ","
 
 	move.w	(sp)+,d0		; pull GOTO/GOSUB token (run out of options)
@@ -1794,16 +1860,24 @@ lab_print:
 lab_1831:
 	beq.s	rts_008			; exit if nothing more to print
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_tab,d0		; compare with TAB( token
+	.enabl	alt
 	beq.s	lab_18a2		; go do TAB/SPC
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_spc,d0		; compare with SPC( token
+	.enabl	alt
 	beq.s	lab_18a2		; go do TAB/SPC
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#',,d0			; compare with ","
+	.enabl	alt
 	beq.s	lab_188b		; go do move to next TAB mark
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#';,d0			; compare with ";"
+	.enabl	alt
 	beq	lab_18bd		; if ";" continue with PRINT processing
 
 	bsr	lab_evex		; evaluate expression
@@ -1868,11 +1942,15 @@ lab_18a2:
 	bsr	lab_sgby		; increment and get byte, result in d0 and Itemp
 	move.w	d0,d2			; copy byte
 	bsr	lab_gbyt		; get basic byte back
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x29,d0			; is next character ")"
+	.enabl	alt
 	bne	lab_sner		; if not do syntax error, then warm start
 
 	move.w	(sp)+,d0		; get token back
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_tab,d0		; was it TAB ?
+	.enabl	alt
 	bne.s	lab_18b7		; branch if not (was SPC)
 
 					; calculate TAB offset
@@ -1929,7 +2007,9 @@ lab_18e3:
 
 lab_prna:
 	move.l	d1,-(sp)		; save d1
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x20,d0			; compare with " "
+	.enabl	alt
 	bcs.s	lab_18f9		; branch if less, non printing character
 
 					; don't check fit if terminal width byte is zero
@@ -1955,7 +2035,9 @@ lab_18f7:
 	addq.b	#0x01,tpos		; increment terminal position
 lab_18f9:
 	jsr	v_outp			; output byte via output vector
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x0d,d0			; compare with [CR]
+	.enabl	alt
 	bne.s	lab_188a		; branch if not [CR]
 
 					; else print nullct nulls after the [CR]
@@ -1995,7 +2077,9 @@ lab_1913:
 
 lab_input:
 	bsr	lab_ckrn		; check not Direct (back here if ok)
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x22,d0			; compare next byte with open quote
+	.enabl	alt
 	bne.s	lab_1934		; branch if no prompt string
 
 	bsr	lab_1bc1		; print "..." string
@@ -2057,7 +2141,9 @@ lab_1986:
 
 					; else get string
 	move.b	d0,d2			; save search character
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x22,d0			; was it " ?
+	.enabl	alt
 	beq.s	lab_1999		; branch if so
 
 	moveq	#':,d2			; set new search character
@@ -2084,7 +2170,9 @@ lab_19b6:
 	bsr	lab_gbyt		; scan memory
 	beq.s	lab_19c2		; branch if null (last entry)
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#',,d0			; else compare with ","
+	.enabl	alt
 	bne	lab_1904		; if not "," go handle bad input data
 
 	addq.w	#1,a5			; else was "," so point to next chr
@@ -2104,13 +2192,17 @@ lab_19dd:
 					; returns a0 as pointer to [:] or [EOL]
 	movea.l	a0,a5			; add index, now = pointer to [EOL]/[EOS]
 	addq.w	#1,a5			; pointer to next character
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#':,d0			; was it statement end?
+	.enabl	alt
 	beq.s	lab_19f6		; branch if [:]
 
 					; was [EOL] so find next line
 
 	move.w	a5,d1			; past pad byte(s)
+	.dsabl	alt ; defeat andi
 	and.w	#1,d1			; mask odd bit
+	.enabl	alt
 	add.w	d1,a5			; add pointer
 	move.l	(a5)+,d2		; get next line pointer
 	beq	lab_oder		; branch if end of program
@@ -2118,7 +2210,9 @@ lab_19dd:
 	move.l	(a5)+,dlinel		; save current DATA line
 lab_19f6:
 	bsr	lab_gbyt		; scan memory
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_data,d0		; compare with "DATA" token
+	.enabl	alt
 	beq	lab_1985		; was "DATA" so go do next READ
 
 	bra.s	lab_19dd		; go find next statement if not "DATA"
@@ -2212,7 +2306,9 @@ lab_1a9b:
 	adda.w	#28,a2			; add 28 to dump FOR structure
 	movea.l	a2,sp			; copy to stack pointer
 	bsr	lab_gbyt		; scan memory
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x2c,d0			; compare with ","
+	.enabl	alt
 	bne	lab_15c2		; if not "," go do interpreter inner loop
 
 					; was "," so another NEXT variable to do
@@ -2274,7 +2370,9 @@ lab_1ade:
 	sub.b	#tk_gt,d0		; subtract token for > (lowest compare function)
 	bcs.s	lab_1afa		; branch if < TK_GT
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x03,d0			; compare with ">" to "<" tokens
+	.enabl	alt
 	bcs.s	lab_1ae0		; branch if < TK_SGN (is compare function)
 
 	tst.b	comp_f			; test compare function flag
@@ -2385,7 +2483,9 @@ lab_1b7b:
 	beq.s	lab_1b9d		; exit if done
 
 lab_1b7d:
+	.dsabl	alt ; defeat cmpi
 	cmp.w	#0x64,d0			; compare previous precedence with $64
+	.enabl	alt
 	beq.s	lab_1b84		; branch if was $64 (< function can be string)
 
 	bsr	lab_ctnm		; check if source is numeric, else type mismatch
@@ -2423,17 +2523,25 @@ lab_1ba4:
 	bmi	lab_1bd0		; if -ve go test token values
 
 					; else is either string, number, variable or (<expr>)
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'$,d0			; compare with "$"
+	.enabl	alt
 	beq	lab_2887		; if "$" get hex number from string & return
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'%,d0			; else compare with "%"
+	.enabl	alt
 	beq	lab_2887		; if "%" get binary number from string & return
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x2e,d0			; compare with "."
+	.enabl	alt
 	beq	lab_2887		; if so get FAC1 from string & return (e.g. .123)
 
 					; wasn't a number so ...
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x22,d0			; compare with "
+	.enabl	alt
 	bne.s	lab_1bf3		; if not open quote must be variable or open bracket
 
 					; was open quote so get the enclosed string
@@ -2450,7 +2558,9 @@ lab_1bc1:
 ; get value from line .. continued
 					; wasn't any sort of number so ...
 lab_1bf3:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'(,d0			; compare with "("
+	.enabl	alt
 	bne.s	lab_1c18		; if not "(" get (var), return value in FAC1 & $ flag
 
 	addq.w	#1,a5			; increment execute pointer
@@ -2498,13 +2608,17 @@ lab_igby:
 lab_gbyt:
 	move.b	(a5),d0			; get byte
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x20,d0			; compare with " "
+	.enabl	alt
 	beq.s	lab_igby		; if " " go do next
 
 ; test current BASIC byte, exit with Cb = 1 if numeric character
 
 lab_tbyt:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x3a,d0			; compare with ":"
+	.enabl	alt
 	bcc.s	rts_001			; exit if >= (not numeric, carry clear)
 
 	subi.b	#0x30,d0			; subtract "0"
@@ -2543,14 +2657,20 @@ lab_1c1a:
 ; do tokens
 
 lab_1bd0:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_minus,d0		; compare with token for -
+	.enabl	alt
 	beq.s	lab_1c11		; branch if - token (do set-up for - operator)
 
 					; wasn't -123 so ...
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_plus,d0		; compare with token for +
+	.enabl	alt
 	beq	lab_1ba4		; branch if + token (+n = n so ignore leading +)
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_not,d0		; compare with token for NOT
+	.enabl	alt
 	bne.s	lab_1be7		; branch if not token for NOT
 
 					; was NOT token
@@ -2559,11 +2679,15 @@ lab_1bd0:
 
 					; wasn't +, - or NOT so ...
 lab_1be7:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_fn,d0		; compare with token for FN
+	.enabl	alt
 	beq	lab_201e		; if FN go evaluate FNx
 
 					; wasn't +, -, NOT or FN so ...
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_sgn,d0		; compare with token for SGN
+	.enabl	alt
 	bcs	lab_sner		; if < SGN token then do syntax error
 
 ; get value from line ..
@@ -2571,21 +2695,29 @@ lab_1be7:
 ; set up function references
 
 lab_1c27:
+	.dsabl	alt ; defeat andi
 	and.w	#0x7f,d0			; normalise and mask byte
+	.enabl	alt
 	asl.w	#2,d0			; *4 (4 bytes per function address)
 	move.w	d0,-(sp)		; push offset
 	move.w	d0,d1			; copy offset
 	bsr	lab_igby		; increment & scan memory
+	.dsabl	alt ; defeat cmpi
 	cmp.w	#(tk_chrs-0x80)*4+1,d1	; compare function offset to CHR$ token offset+1
+	.enabl	alt
 	bcs.s	lab_1c51		; branch if <HEX$ (can not be =)
 
 ; get value from line .. continued
 ; was HEX$, BIN$, VARPTR, LEFT$, RIGHT$ or MID$ so..
 
+	.dsabl	alt ; defeat cmpi
 	cmp.w	#(tk_bins-0x80)*4+1,d1	; compare function offset to BIN$ token offset+1
+	.enabl	alt
 	bcs.s	lab_bhss		; branch if <BITTST (can not be =)
 
+	.dsabl	alt ; defeat cmpi
 	cmp.w	#(tk_vptr-0x80)*4+1,d1	; compare function offset VARPTR token offset+1
+	.enabl	alt
 	bcs.s	lab_1c54		; branch if <LEFT$ (can not be =)
 
 ; get value from line .. continued
@@ -2615,14 +2747,18 @@ lab_bhss:
 					; result in d0 and Itemp
 	bsr	lab_gbyt		; get next BASIC byte
 	moveq	#0,d1			; set default to no leading "0"s
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'),d0			; compare with close bracket
+	.enabl	alt
 	beq.s	lab_1c54		; if ")" go do rest of function
 
 	move.l	itemp,-(sp)		; copy longword to stack (number)
 	bsr	lab_scgb		; scan for "," and get byte value
 	move.l	d0,d1			; copy leading 0s #
 	bsr	lab_gbyt		; get next BASIC byte
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'),d0			; is next character )
+	.enabl	alt
 	bne	lab_fcer		; if not ")" do function call error/warm start
 
 	move.l	(sp)+,itemp		; restore number form stack
@@ -2786,7 +2922,9 @@ lab_lshift:
 					; byte is in d2, integer is in d0 and Itemp
 	beq.s	noshift			; branch if byte zero
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x20,d2			; compare bit count with 32d
+	.enabl	alt
 	bcc.s	toobig			; branch if >=
 
 	asl.l	d2,d0			; shift longword
@@ -2800,7 +2938,9 @@ lab_rshift:
 					; byte is in d2, integer is in d0 and Itemp
 	beq.s	noshift			; branch if byte zero
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x20,d2			; compare bit count with 32d
+	.enabl	alt
 	bcs.s	not2big			; branch if >= (return shift)
 
 	tst.l	d0			; test sign bit
@@ -2832,13 +2972,17 @@ getpair:
 ; check byte, return C=0 if<"A" or >"Z" or <"a" to "z">
 
 lab_casc:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x61,d0			; compare with "a"
+	.enabl	alt
 	bcc.s	lab_1d83		; if >="a" go check =<"z"
 
 ; check byte, return C=0 if<"A" or >"Z"
 
 lab_1d82:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x5b,d0			; compare with "Z"+1
+	.enabl	alt
 	bcs.s	lab_1d8a		; if <="Z" go check >="A"
 
 	rts
@@ -2879,7 +3023,9 @@ lab_1d12:
 	move.b	d1,dtypef		; clear data type, $80=string, $40=integer, $00=float
 
 lab_1d2d:
+	.dsabl	alt ; defeat cmpi
 	cmp.w	#0x04,d1			; done all significant characters?
+	.enabl	alt
 	bcc.s	lab_1d2e		; if so go ignore any more
 
 	move.b	d0,(a0,d1.w)		; save character
@@ -2893,7 +3039,9 @@ lab_1d2e:
 	bcs.s	lab_1d2d		; branch if = "A"-"Z" (ok)
 
 					; check if string variable
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'$,d0			; compare with "$"
+	.enabl	alt
 	bne.s	lab_1d44		; branch if not string
 
 					; type is string
@@ -2903,7 +3051,9 @@ lab_1d2e:
 
 					; check if integer variable
 lab_1d44:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'&,d0			; compare with "&"
+	.enabl	alt
 	bne.s	lab_1d45		; branch if not integer
 
 					; type is integer
@@ -3072,7 +3222,9 @@ lab_evir:
 	bpl.s	lab_evix		; if = and +ve then ok
 
 	move.l	fac1_m,d0		; get mantissa
+	.dsabl	alt ; defeat cmpi
 	cmp.l	#0x80000000,d0		; compare -2147483648 with mantissa
+	.enabl	alt
 	bne	lab_fcer		; if <> do function call error, then warm start
 
 lab_evix:
@@ -3098,7 +3250,9 @@ lab_1e1f:
 	move.w	d0,-(sp)		; save DIM and data type flags
 	addq.w	#1,d1			; increment dimensions count
 	bsr	lab_gbyt		; scan memory
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x2c,d0			; compare with ","
+	.enabl	alt
 	beq.s	lab_1e1f		; if found go do next dimension
 
 	move.b	d1,dimcnt		; store dimensions count
@@ -3341,7 +3495,9 @@ lab_pos:
 ; convert d0 to unsigned byte in FAC1
 
 lab_1fd0:
+	.dsabl	alt ; defeat andi
 	and.l	#0xff,d0			; clear high bits
+	.enabl	alt
 	bra.s	lab_ayfc		; convert d0 to signed longword in FAC1 & RET
 
 ; check not Direct (used by DEF and INPUT)
@@ -3499,7 +3655,9 @@ lab_20be:
 	bne.s	lab_20be		; loop if not terminator 2 (or null string)
 
 lab_20cb:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x22,d0			; compare with "
+	.enabl	alt
 	bne.s	lab_20d0		; branch if not "
 
 	addq.w	#1,a2			; else increment string start (skip " at end)
@@ -3667,7 +3825,9 @@ lab_21c4:
 	moveq	#0,d1			; clear d1
 	move.w	4(a1),d1		; d1 is string length
 	addq.l	#1,d1			; +1
+	.dsabl	alt ; defeat andi
 	and.b	#0xfe,d1			; make even length
+	.enabl	alt
 	adda.l	d1,a0			; pointer is now to string end+1
 	movea.l	sstorl,a2		; is destination end+1
 	cmpa.l	a2,a0			; does the string need moving
@@ -3705,7 +3865,9 @@ lab_2206:
 	moveq	#0,d0			; clear d0
 	move.w	4(a1),d0		; d0 is string length
 	neg.l	d0			; make -ve
+	.dsabl	alt ; defeat andi
 	and.b	#0xfe,d0			; make -ve even length
+	.enabl	alt
 	add.l	sstorl,d0		; add string store to -ve length
 	cmp.l	(a0),d0			; compare with string address
 	beq.s	lab_2212		; if = go move string store pointer down
@@ -3891,7 +4053,9 @@ lab_mids:
 	moveq	#0,d7			; clear longword
 	subq.w	#1,d7			; set default length = 65535
 	bsr	lab_gbyt		; scan memory
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x29,d0			; compare with ")"
+	.enabl	alt
 	beq.s	lab_2358		; branch if = ")" (skip second byte get)
 
 	bsr	lab_1c01		; find "," - else do syntax error/warm start
@@ -4022,7 +4186,9 @@ lab_evby:
 	bsr	lab_evpi		; evaluate positive integer expression
 					; result in d0 and Itemp
 	move.l	d0,d1			; copy result
+	.dsabl	alt ; defeat andi
 	and.l	#0xffffff00,d1		; check top 24 bits
+	.enabl	alt
 	bne	lab_fcer		; if <> 0 do function call error/warm start
 
 	rts
@@ -4295,7 +4461,9 @@ lab_add:
 lab_249c:
 	neg.b	d0			; negate exponent difference (make diff +ve)
 	move.l	d1,-(sp)		; save d1
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#32,d0			; compare exponent diff with 32
+	.enabl	alt
 	blt.s	lab_2467		; branch if range >= 32
 
 	moveq	#0,d1			; clear d1
@@ -4418,7 +4586,9 @@ lab_log:
 	move.b	fac1_e,d1		; get exponent
 	sub.b	#0x82,d1			; normalise and two integer bits
 	neg.b	d1			; negate for shift
+;*	.dsabl	alt ; defeat cmpi
 ;*	cmp.b	#$1f,d1			* will mantissa vanish?
+;*	.enabl	alt
 ;*	bgt.s	lab_dunno		* if so do ???
 
 	move.l	fac1_m,d0		; get mantissa
@@ -4511,7 +4681,7 @@ lab_multiply:
 	beq	lab_muuf		; if exponent zero go make result zero
 
 	move.b	fac2_e,d0		; get FAC2 exponent
-	beq	lab_muuf		; if exponent zero go make result zero
+	beq.l	lab_muuf		; if exponent zero go make result zero
 
 	move.b	fac_sc,fac1_s		; sign compare becomes sign
 
@@ -4593,7 +4763,9 @@ lab_264d:
 	swap	d0			; exponent and sign to bits 0-15
 	move.w	d0,fac2_e		; save FAC2 exponent & sign
 	move.b	d0,fac_sc		; save sign as sign compare
+	.dsabl	alt ; defeat ori
 	or.b	#0x80,d0			; restore MSb
+	.enabl	alt
 	swap	d0			; swap words back
 
 	asl.l	#8,d0			; shift exponent & clear guard byte
@@ -4846,7 +5018,9 @@ lab_ufac:
 	move.l	(a0),d0			; get packed value
 	swap	d0			; exponent and sign into least significant word
 	move.w	d0,fac1_e		; save exponent and sign
+	.dsabl	alt ; defeat ori
 	or.w	#0x80,d0			; set MSb
+	.enabl	alt
 	swap	d0			; byte order back to normal
 
 	asl.l	#8,d0			; shift exponent & clear guard byte
@@ -4879,7 +5053,9 @@ lab_277c:
 	move.l	fac1_m,d0		; get FAC1 mantissa
 	ror.l	#8,d0			; align 24/32 bit mantissa
 	swap	d0			; exponent/sign into 0-15
+	.dsabl	alt ; defeat andi
 	and.w	#0x7f,d0			; clear exponent and sign bit
+	.enabl	alt
 	andi.b	#0x80,fac1_s		; clear non sign bits in sign
 	or.w	fac1_e,d0		; OR in exponent and sign
 	swap	d0			; move exponent and sign  back to 16-31
@@ -4909,7 +5085,9 @@ lab_27ba:
 	bcs	lab_ofer		; if carry do overflow error & warm start
 
 lab_27c3:
+	.dsabl	alt ; defeat andi
 	and.b	#0x00,d0			; clear guard byte
+	.enabl	alt
 	move.l	d0,fac1_m		; save back to FAC1
 	rts
 
@@ -5015,7 +5193,9 @@ lab_2831:
 	move.l	d1,-(sp)		; save d1
 	move.l	fac1_m,d0		; copy mantissa
 	move.b	fac1_e,d1		; get FAC1 exponent
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x81,d1			; compare with min
+	.enabl	alt
 	bcs.s	lab_287f		; if <1 go clear FAC1 & return
 
 	sub.b	#0xa0,d1			; compare maximum integer range exponent
@@ -5025,7 +5205,9 @@ lab_2831:
 	bpl.s	lab_2845		; branch if FAC1 +ve
 
 					; FAC1 was -ve and exponent is $A0
+	.dsabl	alt ; defeat cmpi
 	cmp.l	#0x80000000,d0		; compare with max -ve
+	.enabl	alt
 	beq.s	lab_2845		; branch if max -ve
 
 lab_2844:
@@ -5157,7 +5339,9 @@ lab_2978:
 					; FAC1 is some non zero value
 lab_2989:
 	move.b	#0,numexp		; clear number exponent count
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x81,d2			; compare FAC1 exponent with $81 (>1.00000)
+	.enabl	alt
 
 	bcc.s	lab_299c		; branch if FAC1=>1
 
@@ -5218,7 +5402,9 @@ lab_29c3:
 	add.b	#7,d0			; allow 6 digits before point
 	bmi.s	lab_29d9		; if -ve then 1 digit before dp
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x08,d0			; d0>=8 if n>=1E6
+	.enabl	alt
 	bcc.s	lab_29d9		; branch if >= $08
 
 					; < $08
@@ -5273,7 +5459,9 @@ lab_2a21:
 	addq.w	#4,d2			; increment index to next less power of ten
 	addq.w	#1,d1			; increment output string index
 	move.b	d0,d3			; copy character to d3
+	.dsabl	alt ; defeat andi
 	and.b	#0x7f,d3			; mask out top bit
+	.enabl	alt
 	move.b	d3,(a1,d1.w)		; save to output string
 	sub.b	#1,numexp		; decrement # of characters before the dp
 	bne.s	lab_2a3b		; branch if still characters to do
@@ -5282,19 +5470,27 @@ lab_2a21:
 	addq.l	#1,d1			; increment index
 	move.b	#'.,(a1,d1.w)		; save to output string
 lab_2a3b:
+	.dsabl	alt ; defeat andi
 	and.b	#0x80,d0			; mask test sense bit
+	.enabl	alt
 	eori.b	#0x80,d0			; invert it
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x18,d2			; compare table index with max+4
+	.enabl	alt
 	bne.s	lab_29fb		; loop if not max
 
 					; now remove trailing zeroes
 lab_2a4b:
 	move.b	(a1,d1.w),d0		; get character from output string
 	subq.l	#1,d1			; decrement output string index
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'0,d0			; compare with "0"
+	.enabl	alt
 	beq.s	lab_2a4b		; loop until non "0" character found
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'.,d0			; compare with "."
+	.enabl	alt
 	beq.s	lab_2a58		; branch if was dp
 
 					; else restore last character
@@ -5438,19 +5634,25 @@ lab_exp:
 	move.b	fac1_e,d0		; get exponent
 	beq.s	lab_ex1			; return 1 for zero in
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x64,d0			; compare exponent with min
+	.enabl	alt
 	bcs.s	lab_ex1			; if smaller just return 1
 
 ;*	movem.l	d1-d6/a0,-(sp)		* save the registers
 	move.b	#0,cosout		; flag +ve number
 	move.l	fac1_m,d1		; get mantissa
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x87,d0			; compare exponent with max
+	.enabl	alt
 	bhi.s	lab_exou		; go do over/under flow if greater
 
 	bne.s	lab_excm		; branch if less
 
 					; else is 2^7
+	.dsabl	alt ; defeat cmpi
 	cmp.l	#0xb00f33c7,d1		; compare mantissa with n*2^7 max
+	.enabl	alt
 	bcc.s	lab_exou		; if => go over/underflow
 
 lab_excm:
@@ -5661,7 +5863,9 @@ lab_sccc:
 	bmi.s	lab_scl0		; branch if < 1
 
 					; X is > 1
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x20,d0			; is it >= 2^32
+	.enabl	alt
 	bcc	lab_scze		; may as well do zero
 
 	lsl.l	d0,d6			; shift out integer part bits
@@ -5672,7 +5876,9 @@ lab_sccc:
 					; x is < 1
 lab_scl0:
 	neg.b	d0			; make +ve
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x1e,d0			; is it <= 2^-30
+	.enabl	alt
 	bcc.s	lab_scze		; may as well do zero
 
 	lsr.l	d0,d6			; shift out <= 2^-32 bits
@@ -5723,7 +5929,9 @@ mainloop:
 	sub.l	d2,d1			; y = y + x1
 nexta:
 	addq.l	#1,d5			; i = i + 1
+	.dsabl	alt ; defeat cmpi
 	cmp.l	#0x1e,d5			; check end condition
+	.enabl	alt
 	bne.s	mainloop		; loop if not all done
 
 					; now untangle output value
@@ -5754,7 +5962,9 @@ lab_scze:
 lab_atn:
 	move.b	#0,cosout		; set needed result
 	move.b	fac1_e,d0		; get FAC1 exponent
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x81,d0			; compare exponent with 1
+	.enabl	alt
 	bcs.s	lab_atlo		; branch if FAC1<1
 
 	lea	lab_259c(pc),a0	; set 1 pointer
@@ -5767,7 +5977,9 @@ lab_atlo:
 	ext.l	d1			; make word
 	neg.l	d1			; change to +ve
 	addq.l	#2,d1			; +2
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#11,d1			; compare with 2^-11
+	.enabl	alt
 	bcc.s	rts_021			; x = ATN(x) so skip calc
 
 	lsr.l	d1,d0			; shift in two integer part bits
@@ -5819,7 +6031,9 @@ lab_catn:
 lab_bitset:
 	bsr	lab_gadb		; get two parameters for POKE or WAIT
 					; first parameter in a0, second in d0
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x08,d0			; only 0 to 7 are allowed
+	.enabl	alt
 	bcc	lab_fcer		; branch if > 7
 
 	moveq	#0x02,d1			; set value
@@ -5834,7 +6048,9 @@ lab_bitset:
 lab_bitclr:
 	bsr	lab_gadb		; get two parameters for POKE or WAIT
 					; first parameter in a0, second in d0
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x08,d0			; only 0 to 7 are allowed
+	.enabl	alt
 	bcc	lab_fcer		; branch if > 7
 
 	moveq	#0xff-0x100,d1		; set value
@@ -5850,12 +6066,16 @@ lab_btst:
 	bsr	lab_1bfe		; scan for "(" , else do syntax error/warm start
 	bsr	lab_gadb		; get two parameters for POKE or WAIT
 					; first parameter in a0, second in d0
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x08,d0			; only 0 to 7 are allowed
+	.enabl	alt
 	bcc	lab_fcer		; branch if > 7
 
 	move.l	d0,d1			; copy bit # to test
 	bsr	lab_gbyt		; get next BASIC byte
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'),d0			; is next character ")"
+	.enabl	alt
 	bne	lab_sner		; if not ")" go do syntax error, then warm start
 
 	bsr	lab_igby		; update execute pointer (to character past ")")
@@ -5870,7 +6090,9 @@ lab_btst:
 ; # of leading 0s is in d1, the number is in Itemp
 
 lab_bins:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x21,d1			; max + 1
+	.enabl	alt
 	bcc	lab_fcer		; exit if too big ( > or = )
 
 	move.l	itemp,d0		; get number back
@@ -5902,7 +6124,9 @@ nextb2:
 	move.b	(a0),d0			; get byte
 	beq.s	binpr			; if null then end of string so add 1 and print it
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'0,d0			; compare with "0"
+	.enabl	alt
 	bne.s	gopr			; if not "0" then go print string from here
 
 	addq.w	#1,a0			; else increment pointer
@@ -5923,7 +6147,9 @@ gopr:
 ; perform HEX$()
 
 lab_hexs:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x09,d1			; max + 1
+	.enabl	alt
 	bcc	lab_fcer		; exit if too big ( > or = )
 
 	move.l	itemp,d0		; get number back
@@ -5933,7 +6159,9 @@ lab_hexs:
 nexth1:
 	move.b	d0,d3			; copy lowest byte
 	ror.l	#4,d0			; shift nibble into 0-3
+	.dsabl	alt ; defeat andi
 	and.b	#0x0f,d3			; just this nibble
+	.enabl	alt
 	move.b	d3,d5			; copy it
 	add.b	#0xf6,d5			; set extend bit
 	abcd	d4,d3			; decimal add extend and character to zero
@@ -6014,7 +6242,9 @@ lab_minn:
 ; check for correct exit, else so syntax error
 
 lab_mmec:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'),d0			; is it end of function?
+	.enabl	alt
 	bne	lab_sner		; if not do MAX MIN syntax error
 
 	addq.w	#4,sp			; dump return address
@@ -6026,7 +6256,9 @@ lab_mmec:
 
 lab_phfa:
 	bsr	lab_gbyt		; get next BASIC byte
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#',,d0			; is there more ?
+	.enabl	alt
 	bne.s	lab_mmec		; if not go do end check
 
 	move.w	fac1_e,-(sp)		; push exponent and sign
@@ -6052,14 +6284,18 @@ lab_phfa:
 ; perform WIDTH
 
 lab_wdth:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#',,d0			; is next byte ","
+	.enabl	alt
 	beq.s	lab_tbsz		; if so do tab size
 
 	bsr	lab_gtby		; get byte parameter, result in d0 and Itemp
 	tst.b	d0			; test result
 	beq.s	lab_nstt		; branch if set for infinite line
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x10,d0			; else make min width = 16d
+	.enabl	alt
 	bcs	lab_fcer		; if less do function call error & exit
 
 ; this next compare ensures that we can't exit WIDTH via an error leaving the
@@ -6074,7 +6310,9 @@ lab_nstt:
 	bsr	lab_gbyt		; get BASIC byte back
 	beq.s	wexit			; exit if no following
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#',,d0			; else is it ","
+	.enabl	alt
 	bne	lab_sner		; if not do syntax error
 
 lab_tbsz:
@@ -6082,7 +6320,9 @@ lab_tbsz:
 	tst.b	d0			; test TAB size
 	bmi	lab_fcer		; if >127 do function call error & exit
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#1,d0			; compare with min-1
+	.enabl	alt
 	bcs	lab_fcer		; if <=1 do function call error & exit
 
 	move.b	twidth,d1		; set flags for width
@@ -6229,7 +6469,9 @@ lab_2887:
 	bsr	lab_gbyt		; get first byte back
 	bcs.s	lab_28fe		; go get floating if 1st character numeric
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'-,d0			; or is it -ve number
+	.enabl	alt
 	bne.s	lab_289a		; branch if not
 
 	move.b	#0xff,fac1_s		; set sign byte
@@ -6237,7 +6479,9 @@ lab_2887:
 
 lab_289a:
 					; first character wasn't numeric or -
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'+,d0			; compare with '+'
+	.enabl	alt
 	bne.s	lab_289d		; branch if not '+' (go check for '.'/hex/bin/int)
 
 lab_289c:
@@ -6246,17 +6490,25 @@ lab_289c:
 	bcs.s	lab_28fe		; branch if numeric character
 
 lab_289d:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'.,d0			; else compare with '.'
+	.enabl	alt
 	beq	lab_2904		; branch if '.'
 
 					; code here for hex/binary/integer numbers
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'$,d0			; compare with '$'
+	.enabl	alt
 	beq	lab_chex		; branch if '$'
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'%,d0			; else compare with '%'
+	.enabl	alt
 	beq	lab_cbin		; branch if '%'
 
-;*	cmp.b	#'&',d0			* else compare with '&'
+;*	.dsabl	alt ; defeat cmpi
+;*	cmp.b	#'&,d0			* else compare with '&'
+;*	.enabl	alt
 ;*	beq.s	lab_cint		* branch if '&' go do integer get ##
 
 ; ##	bra	lab_sner		* not #.$%& so do error
@@ -6277,7 +6529,9 @@ lab_28ff:
 	bcs.s	lab_28ff		; loop while numeric character
 
 					; done overflow, now flush fraction or do E
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'.,d0			; else compare with '.'
+	.enabl	alt
 	bne.s	lab_2901		; branch if not '.'
 
 lab_2900:
@@ -6287,17 +6541,23 @@ lab_2900:
 
 lab_2901:
 					; done number, only (possible) exponent remains
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'E,d0			; else compare with 'E'
+	.enabl	alt
 	bne.s	lab_2y01		; if not 'E' all done, go evaluate
 
 					; process exponent
 	bsr	lab_igby		; get next character
 	bcs.s	lab_2x04		; branch if digit
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'-,d0			; or is it -ve number
+	.enabl	alt
 	beq.s	lab_2x01		; branch if so
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_minus,d0		; or is it -ve number
+	.enabl	alt
 	bne.s	lab_2x02		; branch if not
 
 lab_2x01:
@@ -6305,10 +6565,14 @@ lab_2x01:
 	bra.s	lab_2x03		; now go scan & check exponent
 
 lab_2x02:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'+,d0			; or is it +ve number
+	.enabl	alt
 	beq.s	lab_2x03		; branch if so
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#tk_plus,d0		; or is it +ve number
+	.enabl	alt
 	bne	lab_sner		; wasn't - + TK_MINUS TK_PLUS or # so do error
 
 lab_2x03:
@@ -6316,10 +6580,14 @@ lab_2x03:
 	bcc.s	lab_2y01		; if not digit all done, go evaluate
 lab_2x04:
 	mulu	#10,d4			; multiply decimal exponent by 10
+	.dsabl	alt ; defeat andi
 	and.l	#0xff,d0			; mask character
+	.enabl	alt
 	sub.b	#'0,d0			; convert to value
 	add.l	d0,d4			; add to decimal exponent
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#48,d4			; compare with decimal exponent limit+10
+	.enabl	alt
 	ble.s	lab_2x03		; loop if no overflow/underflow
 
 lab_2x05:
@@ -6330,7 +6598,9 @@ lab_2x05:
 	bra.s	lab_2y01		; all done, go evaluate
 
 lab_2902:
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'.,d0			; else compare with '.'
+	.enabl	alt
 	beq.s	lab_2904		; branch if was '.'
 
 	bra.s	lab_2901		; branch if not '.' (go check/do 'E')
@@ -6368,10 +6638,14 @@ lab_2y03:
 
 					; ensure not too big or small
 lab_2y04:
+	.dsabl	alt ; defeat cmpi
 	cmp.l	#38,d4			; compare decimal exponent with max exponent
+	.enabl	alt
 	bgt	lab_ofer		; if greater do overflow error and warm start
 
+	.dsabl	alt ; defeat cmpi
 	cmp.l	#-38,d4			; compare decimal exponent with min exponent
+	.enabl	alt
 	blt.s	lab_ret0		; if less just return zero
 
 	neg.l	d4			; negate decimal exponent to go right way
@@ -6411,11 +6685,15 @@ lab_chxx:
 	bsr	lab_igby		; increment & scan memory
 	bcs.s	lab_ishn		; branch if numeric character
 
+	.dsabl	alt ; defeat ori
 	or.b	#0x20,d0			; case convert, allow "A" to "F" and "a" to "f"
+	.enabl	alt
 	sub.b	#'a,d0			; subtract "a"
 	bcs.s	lab_chx3		; exit if <"a"
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x06,d0			; compare normalised with $06 (max+1)
+	.enabl	alt
 	bcc.s	lab_chx3		; exit if >"f"
 
 	add.b	#0x3a,d0			; convert to nibble+"0"
@@ -6431,11 +6709,15 @@ lab_chx1:
 	bsr	lab_igby		; get next character
 	bcs.s	lab_chx1		; loop while numeric character
 
+	.dsabl	alt ; defeat ori
 	or.b	#0x20,d0			; case convert, allow "A" to "F" and "a" to "f"
+	.enabl	alt
 	sub.b	#'a,d0			; subtract "a"
 	bcs.s	lab_chx3		; exit if <"a"
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#0x06,d0			; compare normalised with $06 (max+1)
+	.enabl	alt
 	bcs.s	lab_chx1		; loop if <="f"
 
 					; now return value
@@ -6470,7 +6752,9 @@ lab_cbxn:
 	bsr	lab_igby		; increment & scan memory
 	bcc.s	lab_chx3		; if not numeric character go return value
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'2,d0			; compare with "2" (max+1)
+	.enabl	alt
 	bcc.s	lab_chx3		; if >="2" go return value
 
 	move.l	d1,d2			; copy value
@@ -6485,7 +6769,9 @@ lab_cbx1:
 	bsr	lab_igby		; get next character
 	bcc.s	lab_chx3		; if not numeric character go return value
 
+	.dsabl	alt ; defeat cmpi
 	cmp.b	#'2,d0			; compare with "2" (max+1)
+	.enabl	alt
 	bcs.s	lab_cbx1		; loop if <"2"
 
 	bra.s	lab_chx3		; if not numeric character go return value
@@ -6509,7 +6795,9 @@ d1x02:
 
 ; now add in new digit
 
+	.dsabl	alt ; defeat andi
 	and.l	#0xff,d0			; mask character
+	.enabl	alt
 	sub.b	#'0,d0			; convert to value
 	add.l	d0,d2			; add to result
 	bcs.s	rts_024			; return if overflow (should never ever do this ##)
