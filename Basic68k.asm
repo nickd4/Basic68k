@@ -7966,6 +7966,7 @@ ccnull:	.blkb	1			; CTRL-C last received byte 'life' timer
 
 file_byte:
 	.blkb	1			; load/save data byte
+	.even
 file_id:
 	.blkl	1			; load/save file ID
 
