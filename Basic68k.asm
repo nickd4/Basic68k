@@ -86,7 +86,7 @@ vec_ld:
 	move.w	#51,d0			; SHOULD BE MOVEQ !!! open existing file
 	trap	#15
 	tst.w	d0			; test load result
-	bne	load_exit		; if error clear up and exit
+	bne.l	load_exit		; if error clear up and exit
 
 	move.l	d1,file_id		; save file ID
 	movea.l	#file_byte,a1		; point to byte buffer
@@ -95,14 +95,14 @@ vec_ld:
 	trap	#15
 
 	tst.w	d0			; test status
-	bne	load_close		; if error close files & exit
+	bne.l	load_close		; if error close files & exit
 
 	moveq	#0,d2			; file position
 	moveq	#55,d0			; reset file position
 	trap	#15
 
 	move.b	(a1),d0			; get first file byte
-	bne	load_ascii		; if first byte not $00 go do ASCII load
+	bne.l	load_ascii		; if first byte not $00 go do ASCII load
 
 					; do binary load
 	movea.l	smeml,a1		; get start of program memory
@@ -143,7 +143,7 @@ load_in:
 	trap	#15
 
 	tst.w	d0			; test status
-	bne	load_eof		; branch if byte read failed
+	bne.l	load_eof		; branch if byte read failed
 
 	move.b	(a1),d0			; get byte
 	movem.l	(sp)+,d1-d2/a1		; restore d1, d2 & a1
@@ -169,7 +169,7 @@ vec_sv:
 	bsr	lab_ctst		; check if source is string, else do type mismatch
 
 	bsr	lab_gbyt		; get next BASIC byte
-	beq	save_bas		; branch if no following
+	beq.l	save_bas		; branch if no following
 
 	cmp.b	#',,d0			; compare with ","
 	bne	lab_sner		; not "," so go do syntax error/warm start
@@ -191,7 +191,7 @@ vec_sv:
 	move.w	#52,d0			; SHOULD BE MOVEQ !!! open new file
 	trap	#15
 	tst.w	d0			; test save result
-	bne	save_exit		; if error clear up and exit
+	bne.l	save_exit		; if error clear up and exit
 
 	move.l	d1,file_id		; save file ID
 
@@ -203,7 +203,7 @@ vec_sv:
 	bsr	lab_list		; go do list (line numbers applicable)
 
 	move.l	(sp)+,v_outpv		; restore the output vector
-	bra	save_close
+	bra.l	save_close
 
 save_bas:
 	bsr	lab_evst		; evaluate string, returns d0 = length, a0 = pointer
@@ -218,7 +218,7 @@ save_bas:
 	move.w	#52,d0			; SHOULD BE MOVEQ !!! open new file
 	trap	#15
 	tst.w	d0			; test save result
-	bne	save_exit		; if error clear up and exit
+	bne.l	save_exit		; if error clear up and exit
 
 	movea.l	smeml,a1		; get start of program
 	move.l	sfncl,d2		; get end of program
@@ -870,7 +870,7 @@ lab_13ac:
 
 	move.b	d0,asrch		; save buffer byte as search character
 	cmp.b	#0x22,d0			; is it quote character?
-	beq	lab_1410		; branch if so (copy quoted string)
+	beq.l	lab_1410		; branch if so (copy quoted string)
 
 	cmp.b	#'*,d0			; compare with "*"
 	bcs.s	lab_13ec		; if <= "*" save byte then continue crunching
@@ -1358,7 +1358,7 @@ lab_cont:
 ; perform RUN
 
 lab_run:
-	bne	lab_runn		; if following byte do RUN n
+	bne.l	lab_runn		; if following byte do RUN n
 
 	bsr	lab_1477		; execution to start, clear vars & flush stack
 	move.l	a5,cpntrl		; save as continue pointer
@@ -1514,7 +1514,7 @@ lab_return:
 ; perform DATA
 
 lab_data:
-	bsr	lab_snbs		; scan for next BASIC statement ([:] or [EOL])
+	bsr.l	lab_snbs		; scan for next BASIC statement ([:] or [EOL])
 					; returns a0 as pointer to [:] or [EOL]
 	movea.l	a0,a5			; skip rest of statement
 rts_007:
@@ -2331,7 +2331,7 @@ lab_1b1d:
 	move.w	d0,d0			; copy precedence (set flags)
 	beq.s	lab_1b7b		; exit if done
 
-	bra	lab_1b86		; else pop FAC2 & return (do function)
+	bra.l	lab_1b86		; else pop FAC2 & return (do function)
 
 					; was compare function (< = >)
 lab_1b2a:
@@ -2416,7 +2416,7 @@ lab_1b9d:
 lab_gval:
 	move.b	#0x00,dtypef		; clear data type flag, $00=float
 lab_1ba4:
-	bsr	lab_igby		; increment & scan memory
+	bsr.l	lab_igby		; increment & scan memory
 	bcs	lab_2887		; if numeric get FAC1 from string & return
 
 	tst.b	d0			; test byte
@@ -3609,7 +3609,7 @@ lab_214b:
 	bra.s	lab_2176		; branch into loop at end loop test
 
 lab_2161:
-	bsr	lab_2206		; test and set if this is the highest string
+	bsr.l	lab_2206		; test and set if this is the highest string
 	add.l	#10,a0			; increment to next string
 lab_2176:
 	cmpa.l	a0,a2			; compare pointer with with end of area
@@ -4526,7 +4526,7 @@ lab_multiply:
 					; no carry for exponent add
 lab_mnoc:
 	sub.b	#0x80,d0			; normalise result
-	bcs	lab_muuf		; return zero if underflow
+	bcs.l	lab_muuf		; return zero if underflow
 
 lab_madd:
 	move.b	d0,fac1_e		; save exponent
@@ -4701,7 +4701,7 @@ lab_set1:
 					; test for over/under flow
 l_divrnd:
 	move.w	d0,d3			; copy exponent
-	bmi	lab_div0		; if -ve return zero
+	bmi.l	lab_div0		; if -ve return zero
 
 	andi.w	#0xff00,d3		; mask low byte
 	bne	lab_ofer		; branch if overflow

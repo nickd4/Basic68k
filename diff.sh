@@ -1,4 +1,4 @@
 #!/bin/sh
-srec_cat -output good -Ascii_Hex Basic68k.S68
-srec_cat -output bad -Ascii_Hex Basic68k.s37
+srec_cat -output - -Binary Basic68k.S68 |xxd >good
+srec_cat -output - -Binary Basic68k.s37 |xxd >bad
 diff --unified good bad >diff
