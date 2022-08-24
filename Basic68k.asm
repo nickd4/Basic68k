@@ -83,7 +83,9 @@ vec_ld:
 	move.l	a0,-(sp)		; save address
 	moveq	#0,d0			; set for null
 	move.b	d0,(a0)			; null terminate string
-	move.w	#51,d0			; SHOULD BE MOVEQ !!! open existing file
+	.dsabl	alt ; defeat moveq
+	move	#51,d0			; open existing file
+	.enabl	alt
 	trap	#15
 	tst.w	d0			; test load result
 	bne.l	load_exit		; if error clear up and exit
@@ -192,7 +194,9 @@ vec_sv:
 	move.l	a0,-(sp)		; save address
 	moveq	#0,d0			; set for null
 	move.b	d0,(a0)			; null terminate string
-	move.w	#52,d0			; SHOULD BE MOVEQ !!! open new file
+	.dsabl	alt ; defeat moveq
+	move	#52,d0			; open new file
+	.enabl	alt
 	trap	#15
 	tst.w	d0			; test save result
 	bne.l	save_exit		; if error clear up and exit
@@ -219,7 +223,9 @@ save_bas:
 	move.l	a0,-(sp)		; save address
 	moveq	#0,d0			; set for null
 	move.b	d0,(a0)			; null terminate string
-	move.w	#52,d0			; SHOULD BE MOVEQ !!! open new file
+	.dsabl	alt ; defeat moveq
+	move	#52,d0			; open new file
+	.enabl	alt
 	trap	#15
 	tst.w	d0			; test save result
 	bne.l	save_exit		; if error clear up and exit
@@ -4089,7 +4095,7 @@ lab_2368:
 lab_236f:
 	bsr	lab_1bfb		; scan for ")" , else do syntax error/warm start
 	move.l	(sp)+,d1		; pull return address
-	addq.w	#4,sp			; skip type check on exit
+	addq	#4,sp			; skip type check on exit
 	moveq	#0,d0			; clear longword
 	move.w	(sp)+,d0		; pull word parameter
 	move.l	(sp)+,a0		; pull string pointer
